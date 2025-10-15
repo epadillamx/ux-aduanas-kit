@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guías Asociadas - Sistema Courier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f69b4',
+                        secondary: '#1e40af',
+                        accent: '#3b82f6'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <!-- Header Moderno -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <img src="imagenes_sistema/color_MinInterior.png" alt="Gobierno de Chile" class="h-12">
+                    <div class="border-l border-gray-300 pl-4">
+                        <h1 class="text-xl font-bold text-gray-900">Sistema Courier</h1>
+                        <p class="text-sm text-gray-500">Guías Asociadas</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-bell text-gray-600"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                            U
+                        </div>
+                        <span class="text-sm font-medium text-gray-700">Usuario</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Botón Volver -->
+        <div class="mb-6">
+            <a href="courier.html" class="inline-flex items-center space-x-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver a Courier</span>
+            </a>
+        </div>
+
+        <!-- Información Principal -->
+        <div class="bg-gradient-to-r from-primary to-blue-600 rounded-xl shadow-lg p-6 mb-6 text-white">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">FISCALIZADOR</p>
+                    <p class="text-xl font-bold">ymendez</p>
+                    <span class="inline-block mt-2 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold">
+                        Revisado
+                    </span>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">NRO.LISTA</p>
+                    <p class="text-2xl font-bold">84751</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">FECHA ACEPTACIÓN</p>
+                    <p class="text-lg font-bold">14-01-2025 13:29</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">NRO. MASTER</p>
+                    <p class="text-2xl font-bold">789444</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4 pt-4 border-t border-white/20">
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">NRO. VUELO/PATENTE</p>
+                    <p class="text-xl font-bold">033</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">CÍA. TRANSPORTE</p>
+                    <p class="text-sm font-bold">MENDEZ TRONCOSO, YERKO WILLIAM</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">EMPRESA COURIER</p>
+                    <p class="text-sm font-bold">MENDEZ TRONCOSO, YERKO WILLIAM</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">TOTAL VALOR FOB</p>
+                    <p class="text-2xl font-bold">$39055.0</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4 pt-4 border-t border-white/20">
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">ORIGEN</p>
+                    <p class="text-lg font-bold">MIAMI</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">DESTINO</p>
+                    <p class="text-lg font-bold">SANTIAGO</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">TOTAL GUÍAS</p>
+                    <p class="text-lg font-bold">85 <span class="text-sm font-normal">TOTAL GUÍAS SOBRE 500 16 DÓLARES</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selector de Tipo -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="flex items-center space-x-4">
+                <div class="flex-1">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">COURIER</label>
+                    <div class="relative">
+                        <select id="courierSelect" class="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none bg-white">
+                            <option>COURIER</option>
+                            <option>EXTRAORDINARIA</option>
+                            <option>DECLARACION</option>
+                            <option>DECLARACIÓN FÍSICO</option>
+                            <option>DECLARACIÓN 00 23 (DIPS sin advalorem)</option>
+                            <option>DGUN</option>
+                            <option>DIFROL</option>
+                            <option>FISICO</option>
+                            <option>ISP</option>
+                            <option>LIBRE</option>
+                            <option>RETENCION</option>
+                            <option>S.A.G</option>
+                            <option>Selección efectuada luego de análisis de manifiestos</option>
+                            <option>SEREMI</option>
+                            <option>SERNAPESCA</option>
+                            <option>TRANSITO</option>
+                        </select>
+                        <i class="fas fa-chevron-down text-gray-400 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"></i>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">TIPO FÍSICO</label>
+                    <div class="relative">
+                        <select class="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none bg-white">
+                            <option>FISICO</option>
+                            <option>DECLARACION</option>
+                            <option>MIXTO</option>
+                        </select>
+                        <i class="fas fa-chevron-down text-gray-400 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"></i>
+                    </div>
+                </div>
+                <div class="flex space-x-3 pt-6">
+                    <button id="btnAceptar" onclick="aceptarGuias()" class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center space-x-2">
+                        <i class="fas fa-check"></i>
+                        <span>Aceptar</span>
+                    </button>
+                    <button id="btnAceptarObs" onclick="abrirModalObservaciones()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center space-x-2">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Guardar con Obs.</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown de Opciones -->
+        <div id="dropdownMenu" class="bg-white rounded-xl shadow-lg p-6 mb-6 hidden">
+            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <i class="fas fa-list mr-2 text-primary"></i>
+                Opciones de Courier
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    DECLARACION
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    EXTRAORDINARIA
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    DECLARACIÓN FÍSICO
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    DECLARACIÓN 00 23
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    DGUN
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    DIFROL
+                </button>
+                <button class="px-4 py-3 bg-primary text-white rounded-lg transition-all text-sm font-semibold shadow-md">
+                    FISICO
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    ISP
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    LIBRE
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    RETENCION
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    S.A.G
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    SEREMI
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    SERNAPESCA
+                </button>
+                <button class="px-4 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-lg transition-all text-sm font-semibold text-gray-700">
+                    TRANSITO
+                </button>
+            </div>
+        </div>
+
+        <!-- Tabla de Guías Asociadas -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-primary to-blue-600 px-6 py-4 flex justify-between items-center">
+                <h3 class="text-white font-bold text-lg flex items-center">
+                    <i class="fas fa-box mr-2"></i>
+                    Guías Asociadas En: 12
+                </h3>
+                <div class="flex items-center space-x-2 text-white">
+                    <span class="text-sm">Total Peso: <span class="font-bold">11499.0</span></span>
+                    <span class="mx-2">|</span>
+                    <span class="text-sm">Total Valor: <span class="font-bold">39055.0</span></span>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50 border-b border-gray-200">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">
+                                <input type="checkbox" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Nro. Guía</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Consignatario</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">IVA-COS</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">ID-ENVIO</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Consignante</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Rut Consignatario</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Cantidad Productos</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Partida</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Resultado Revisión</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr class="hover:bg-blue-50 transition-colors">
+                            <td class="px-4 py-3">
+                                <input type="checkbox" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-bold bg-gradient-to-r from-green-400 to-green-600 text-white shadow-sm">
+                                    LIBRE
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-sm font-medium text-gray-900">nombre nuevo consignante</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">SI</td>
+                            <td class="px-4 py-3 text-sm text-primary font-semibold">84365</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">nombre nuevo consignante</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">1387878-5</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">0</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">productos</td>
+                            <td class="px-4 py-3">
+                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                                    CENTR. PRESENTADO
+                                </span>
+                            </td>
+                            <td class="px-4 py-3">
+                                <button class="text-primary hover:text-blue-700 font-semibold text-sm">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition-colors">
+                            <td class="px-4 py-3">
+                                <input type="checkbox" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-bold bg-gradient-to-r from-red-400 to-red-600 text-white shadow-sm">
+                                    RETENCION
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-sm font-medium text-gray-900">Rut generico</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">NO</td>
+                            <td class="px-4 py-3 text-sm text-primary font-semibold">99999999-9</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">Rut generico</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">-</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">0</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">-</td>
+                            <td class="px-4 py-3">
+                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
+                                    K.RETENCION
+                                </span>
+                            </td>
+                            <td class="px-4 py-3">
+                                <button class="text-primary hover:text-blue-700 font-semibold text-sm">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toast-root" class="fixed bottom-4 right-4 z-[100] space-y-2"></div>
+
+    <!-- Modal de Observaciones -->
+    <div id="modalObservaciones" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <!-- Header del Modal -->
+            <div class="bg-gradient-to-r from-primary to-blue-600 p-6 text-white">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-clipboard-list mr-3"></i>
+                        Marcaciones
+                    </h3>
+                    <button onclick="cerrarModal()" class="text-white hover:text-gray-200 transition-colors">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contenido del Modal -->
+            <div class="p-6 space-y-6">
+                <!-- Motivo de Marca -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <i class="fas fa-tag mr-2 text-primary"></i>Motivo de Marca:
+                    </label>
+                    <select id="motivoMarca" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        <option value="">Seleccione...</option>
+                        <option value="DECLARACION">DECLARACION</option>
+                        <option value="EXTRAORDINARIA">EXTRAORDINARIA</option>
+                        <option value="FISICO">FISICO</option>
+                        <option value="RETENCION">RETENCION</option>
+                    </select>
+                </div>
+
+                <!-- Tipo Fiscalización -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <i class="fas fa-clipboard-check mr-2 text-primary"></i>Tipo Fiscalización:
+                    </label>
+                    <select id="tipoFiscalizacion" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        <option value="">Seleccione...</option>
+                        <option value="COURIER">COURIER</option>
+                        <option value="EXTRAORDINARIA">EXTRAORDINARIA</option>
+                    </select>
+                </div>
+
+                <!-- Descripción -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <i class="fas fa-align-left mr-2 text-primary"></i>Descripción:
+                    </label>
+                    <textarea id="descripcion" rows="4" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none" placeholder="Ingrese la descripción..."></textarea>
+                </div>
+
+                <!-- Observación -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <i class="fas fa-comment mr-2 text-primary"></i>Observación:
+                    </label>
+                    <textarea id="observacion" rows="3" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none" placeholder="Ingrese observaciones adicionales..."></textarea>
+                </div>
+
+                <!-- Fiscalización Sobre -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-3">
+                        <i class="fas fa-check-circle mr-2 text-primary"></i>Fiscalización Sobre:
+                    </label>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="fiscalizacionSobre" value="Documento" checked class="w-5 h-5 text-primary border-gray-300 focus:ring-primary">
+                            <span class="text-gray-700 font-medium">Documento</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="fiscalizacionSobre" value="Operacion Asociada" class="w-5 h-5 text-primary border-gray-300 focus:ring-primary">
+                            <span class="text-gray-700 font-medium">Operación Asociada</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer del Modal -->
+            <div class="bg-gray-50 px-6 py-4 flex justify-end space-x-3 border-t border-gray-200">
+                <button onclick="cerrarModal()" class="px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-lg transition-all">
+                    <i class="fas fa-times mr-2"></i>Cancelar
+                </button>
+                <button onclick="guardarObservaciones()" class="px-6 py-3 bg-gradient-to-r from-primary to-blue-600 hover:from-blue-600 hover:to-primary text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl">
+                    <i class="fas fa-save mr-2"></i>Generar Acción
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle dropdown menu
+        document.getElementById('courierSelect').addEventListener('click', function() {
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Función para verificar si hay guías seleccionadas
+        function verificarGuiasSeleccionadas() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            return checkboxes.length > 0;
+        }
+
+        // Función para aceptar guías
+        function aceptarGuias() {
+            if (!verificarGuiasSeleccionadas()) {
+                showToast('warning', 'Debe seleccionar al menos una guía antes de aceptar.');
+                return;
+            }
+
+            // Simulación: Mostrar alert de éxito
+            showToast('success', 'Guías guardadas exitosamente.');
+            
+            // Opcional: Desmarcar todas las guías después de guardar
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = false);
+        }
+
+        // Función para abrir modal de observaciones
+        function abrirModalObservaciones() {
+            if (!verificarGuiasSeleccionadas()) {
+                showToast('warning', 'Debe seleccionar al menos una guía antes de guardar con observaciones.');
+                return;
+            }
+
+            // Mostrar el modal
+            document.getElementById('modalObservaciones').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+        }
+
+        // Función para cerrar modal
+        function cerrarModal() {
+            document.getElementById('modalObservaciones').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restaurar scroll del body
+            
+            // Limpiar formulario
+            document.getElementById('motivoMarca').value = '';
+            document.getElementById('tipoFiscalizacion').value = '';
+            document.getElementById('descripcion').value = '';
+            document.getElementById('observacion').value = '';
+        }
+
+        // Función para guardar observaciones
+        function guardarObservaciones() {
+            const motivoMarca = document.getElementById('motivoMarca').value;
+            const tipoFiscalizacion = document.getElementById('tipoFiscalizacion').value;
+            const descripcion = document.getElementById('descripcion').value;
+            const observacion = document.getElementById('observacion').value;
+            const fiscalizacionSobre = document.querySelector('input[name="fiscalizacionSobre"]:checked').value;
+
+            // Validar campos requeridos
+            if (!motivoMarca || !tipoFiscalizacion) {
+                showToast('error', 'Complete los campos obligatorios: Motivo de Marca y Tipo Fiscalización.');
+                return;
+            }
+
+            // Simulación: Mostrar datos capturados
+            console.log('📋 Datos de Marcación:', {
+                motivoMarca,
+                tipoFiscalizacion,
+                descripcion,
+                observacion,
+                fiscalizacionSobre
+            });
+
+            // Cerrar modal
+            cerrarModal();
+
+            // Mostrar alert de éxito
+            showToast('success', 'Marcación guardada exitosamente.');
+
+            // Opcional: Desmarcar todas las guías después de guardar
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = false);
+        }
+
+        // Cerrar modal al hacer clic fuera de él
+        document.getElementById('modalObservaciones').addEventListener('click', function(e) {
+            if (e.target === this) {
+                cerrarModal();
+            }
+        });
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('modalObservaciones');
+                if (!modal.classList.contains('hidden')) {
+                    cerrarModal();
+                }
+            }
+        });
+
+        // Obtener número de manifiesto de la URL (opcional)
+        const urlParams = new URLSearchParams(window.location.search);
+        const manifiesto = urlParams.get('manifiesto');
+        if (manifiesto) {
+            console.log('📦 Manifiesto seleccionado:', manifiesto);
+        }
+
+        // Toast utility
+        function showToast(type = 'info', message = '') {
+            const root = document.getElementById('toast-root');
+            if (!root) return;
+
+            const colors = {
+                success: 'bg-green-100 text-green-800 border-green-200',
+                error: 'bg-red-100 text-red-800 border-red-200',
+                warning: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+                info: 'bg-blue-100 text-blue-800 border-blue-200'
+            };
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-times-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
+
+            const wrapper = document.createElement('div');
+            wrapper.className = `pointer-events-auto border ${colors[type] || colors.info} rounded-lg shadow-lg px-4 py-3 flex items-start space-x-3 animate-[fadeIn_0.2s_ease-out]`;
+            wrapper.innerHTML = `
+                <i class="fas ${icons[type] || icons.info} mt-0.5"></i>
+                <div class="text-sm font-medium">${message}</div>
+                <button aria-label="Cerrar" class="ml-2 text-inherit/70 hover:text-inherit">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+
+            const closeBtn = wrapper.querySelector('button');
+            const remove = () => {
+                wrapper.style.animation = 'fadeOut 0.2s ease-in forwards';
+                setTimeout(() => wrapper.remove(), 180);
+            };
+            closeBtn.addEventListener('click', remove);
+
+            root.appendChild(wrapper);
+            setTimeout(remove, 3500);
+        }
+
+        // Keyframes for fade in/out (Tailwind inline)
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn { from { opacity: 0; transform: translateY(4px);} to { opacity: 1; transform: translateY(0);} }
+            @keyframes fadeOut { from { opacity: 1; transform: translateY(0);} to { opacity: 0; transform: translateY(4px);} }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

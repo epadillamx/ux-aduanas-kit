@@ -4,156 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sistema de Fiscalización</title>
-
-    <!-- Framework Gobierno Digital Chile - CSS -->
-    <link rel="stylesheet" href="node_modules/@gobdigital-cl/gob.cl/dist/css/gob.cl.css">
-
-    <!-- Tipografías Roboto y Roboto Slab -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: #f5f5f5;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f69b4',
+                        secondary: '#1e40af'
+                    }
+                }
+            }
         }
-        .login-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .login-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 2rem;
-            max-width: 450px;
-            width: 100%;
-        }
-        .login-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .login-header img {
-            max-width: 200px;
-            margin-bottom: 1rem;
-        }
-        .login-header h1 {
-            font-size: 1.75rem;
-            color: #0f69b4;
-            font-family: 'Roboto Slab', serif;
-            margin-bottom: 0.5rem;
-        }
-        .login-header p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-    </style>
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <!-- Header Gobierno de Chile -->
-    <header class="navbar navbar-expand-lg navbar-dark bg-gob">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <span class="navbar-brand-text">Gobierno de Chile</span>
-            </a>
-        </div>
-    </header>
-
-    <!-- Contenedor de Login -->
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-header">
-                <img src="https://framework.digital.gob.cl/images/logo_gobcl.svg" alt="Gobierno de Chile">
-                <h1>Sistema de Fiscalización</h1>
-                <p>Ingrese sus credenciales para acceder</p>
+<body class="bg-gradient-to-br from-blue-50 via-gray-50 to-blue-100 min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <!-- Tarjeta de Login -->
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <!-- Header con gradiente -->
+            <div class="bg-gradient-to-r from-primary to-blue-700 p-8 text-center">
+                <img src="imagenes_sistema/color_MinInterior.png" alt="Gobierno de Chile" class="h-20 mx-auto mb-4">
+                <h1 class="text-2xl font-bold text-white mb-2">Sistema de Fiscalización</h1>
+                <p class="text-blue-100 text-sm">Courier - Aduanas de Chile</p>
             </div>
 
-            <form id="loginForm">
-                <!-- Campo RUT -->
-                <div class="form-group">
-                    <label for="rut">RUT</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="rut"
-                        name="rut"
-                        placeholder="12.345.678-9"
-                        required
-                        aria-describedby="rutHelp">
-                    <small id="rutHelp" class="form-text text-muted">
-                        Ingrese su RUT sin puntos y con guión
-                    </small>
-                </div>
+            <!-- Formulario -->
+            <div class="p-8">
+                <form id="loginForm" class="space-y-6">
+                    <!-- Campo RUT -->
+                    <div>
+                        <label for="rut" class="block text-sm font-semibold text-gray-700 mb-2">
+                            <i class="fas fa-id-card mr-2 text-primary"></i>RUT
+                        </label>
+                        <input
+                            type="text"
+                            id="rut"
+                            name="rut"
+                            placeholder="12.345.678-9"
+                            required
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        <p class="text-xs text-gray-500 mt-1">
+                            <i class="fas fa-info-circle mr-1"></i>Ingrese su RUT sin puntos y con guión
+                        </p>
+                    </div>
 
-                <!-- Campo Contraseña -->
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input
-                        type="password"
-                        class="form-control"
-                        id="password"
-                        name="password"
-                        placeholder="Ingrese su contraseña"
-                        required>
-                </div>
+                    <!-- Campo Contraseña -->
+                    <div>
+                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
+                            <i class="fas fa-lock mr-2 text-primary"></i>Contraseña
+                        </label>
+                        <div class="relative">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Ingrese su contraseña"
+                                required
+                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                            <button type="button" onclick="togglePassword()" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700">
+                                <i id="toggleIcon" class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
 
-                <!-- Recordar sesión -->
-                <div class="form-check mb-3">
-                    <input
-                        type="checkbox"
-                        class="form-check-input"
-                        id="remember">
-                    <label class="form-check-label" for="remember">
-                        Recordar mi sesión
-                    </label>
-                </div>
+                    <!-- Recordar sesión -->
+                    <div class="flex items-center">
+                        <input
+                            type="checkbox"
+                            id="remember"
+                            class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+                        <label for="remember" class="ml-2 text-sm text-gray-700">
+                            Recordar mi sesión
+                        </label>
+                    </div>
 
-                <!-- Mensaje de error -->
-                <div id="errorMessage" class="alert alert-danger d-none" role="alert">
-                    <strong>Error:</strong> <span id="errorText"></span>
-                </div>
+                    <!-- Mensaje de error -->
+                    <div id="errorMessage" class="hidden bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                        <div class="flex items-start">
+                            <i class="fas fa-exclamation-circle text-red-500 mt-0.5 mr-2"></i>
+                            <div>
+                                <p class="font-semibold text-red-800">Error</p>
+                                <p id="errorText" class="text-sm text-red-700"></p>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Botones -->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">
-                        Ingresar
+                    <!-- Botón Ingresar -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-primary to-blue-700 hover:from-blue-700 hover:to-primary text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Ingresar al Sistema</span>
                     </button>
-                </div>
 
-                <div class="text-center mt-3">
-                    <a href="#" class="text-muted">¿Olvidó su contraseña?</a>
-                </div>
-            </form>
+                    <div class="text-center">
+                        <a href="#" class="text-sm text-primary hover:text-blue-700 font-medium">
+                            <i class="fas fa-question-circle mr-1"></i>¿Olvidó su contraseña?
+                        </a>
+                    </div>
+                </form>
 
-            <!-- Información adicional -->
-            <hr class="my-4">
-            <div class="text-center">
-                <p class="text-muted small mb-2">¿No tiene cuenta?</p>
-                <a href="#" class="btn btn-outline-secondary btn-sm">
-                    Solicitar acceso
-                </a>
+                <!-- Información adicional -->
+                <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+                    <p class="text-sm text-gray-600 mb-3">¿No tiene cuenta?</p>
+                    <a href="#" class="inline-flex items-center space-x-2 px-6 py-2 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg transition-all duration-200 font-semibold">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Solicitar acceso</span>
+                    </a>
+                </div>
             </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-center">
+            <p class="text-sm text-gray-600">© 2025 Gobierno de Chile - Sistema de Fiscalización Aduanera</p>
+            <p class="text-xs text-gray-500 mt-1">Versión 2.0 - Modernizada</p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gob text-white py-3 mt-auto">
-        <div class="container text-center">
-            <p class="mb-0 small">© 2025 Gobierno de Chile - Sistema de Fiscalización</p>
-        </div>
-    </footer>
-
-    <!-- jQuery requerido por el framework -->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-
-    <!-- Popper.js requerido por Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <!-- Framework Gobierno Digital Chile - JS -->
-    <script src="node_modules/@gobdigital-cl/gob.cl/dist/js/gob.cl.js"></script>
-
-    <!-- Script de validación del formulario -->
     <script>
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Validación del formulario
         // Validación básica de RUT chileno
         function validarRUT(rut) {
             // Limpiar RUT
@@ -193,43 +179,13 @@
             }
         });
 
-        // Manejo del envío del formulario
+        // Manejo del envío del formulario - MODO SIMULACIÓN
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const errorDiv = document.getElementById('errorMessage');
-            const errorText = document.getElementById('errorText');
-
-            // Ocultar mensajes de error previos
-            errorDiv.classList.add('d-none');
-
-            // Obtener valores
-            const rut = document.getElementById('rut').value;
-            const password = document.getElementById('password').value;
-
-            // Validar RUT
-            if (!validarRUT(rut)) {
-                errorText.textContent = 'El RUT ingresado no es válido';
-                errorDiv.classList.remove('d-none');
-                return;
-            }
-
-            // Validar contraseña
-            if (password.length < 6) {
-                errorText.textContent = 'La contraseña debe tener al menos 6 caracteres';
-                errorDiv.classList.remove('d-none');
-                return;
-            }
-
-            // Aquí iría la lógica de autenticación
-            console.log('Login exitoso:', {
-                rut: rut,
-                remember: document.getElementById('remember').checked
-            });
-
-            // Ejemplo de éxito
-            alert('Credenciales válidas. Redirigiendo...');
-            // window.location.href = 'dashboard.html';
+            // Simulación: Redirigir directamente sin validación
+            console.log('🎭 MODO SIMULACIÓN: Redirigiendo a index.html');
+            window.location.href = 'courier.html';
         });
     </script>
 </body>

@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Guías - Sistema Courier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <img src="imagenes_sistema/color_MinInterior.png" alt="Gobierno de Chile" class="h-12">
+                    <div class="border-l border-gray-300 pl-4">
+                        <h1 class="text-xl font-bold text-gray-900">Sistema Courier</h1>
+                        <p class="text-sm text-gray-500">Búsqueda de Guías</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <i class="fas fa-search fa-lg mr-2 text-blue-600"></i>
+                Búsqueda de Guías
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nro.Guía Courier:</label>
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Rut Consignante:</label>
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Rut Consignatario:</label>
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg">
+                    <div class="flex space-x-2 mt-2">
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">Buscar</button>
+                        <button class="px-4 py-2 bg-gray-600 text-white rounded-lg">= Volver</button>
+                        <button class="px-4 py-2 bg-green-600 text-white rounded-lg">@ Exportar a Excel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
+                <h3 class="text-white font-bold text-lg">Guías Asociadas:85</h3>
+            </div>
+            <table class="w-full">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-700">Guía</th>
+                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-700">Consignatario</th>
+                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-700">Nro. Bultos</th>
+                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-700">Nro. Peso</th>
+                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-700">Nro. Valor</th>
+                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-700">IVA-COS</th>
+                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-700">Consignante</th>
+                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-700">Rut Consignatario</th>
+                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-700">Partida</th>
+                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-700">Resultado Revisión</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-blue-50">
+                        <td class="px-4 py-3"><span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-lg font-bold">GTIME-IVAD-21110021</span></td>
+                        <td class="px-4 py-3">MENDEZ TRONCOSO, YERKO WILLIAM</td>
+                        <td class="px-4 py-3">2.0</td>
+                        <td class="px-4 py-3">144.0</td>
+                        <td class="px-4 py-3">126.0</td>
+                        <td class="px-4 py-3">590000001-9</td>
+                        <td class="px-4 py-3">SI</td>
+                        <td class="px-4 py-3">-</td>
+                        <td class="px-4 py-3">rut generico</td>
+                        <td class="px-4 py-3">10/13/56 || CON MARCA</td>
+                    </tr>
+                    <tr class="hover:bg-blue-50">
+                        <td class="px-4 py-3"><span class="px-3 py-1 bg-red-100 text-red-800 rounded-lg font-bold">GTIME-IVAD-02102025019</span></td>
+                        <td class="px-4 py-3">MENDEZ TRONCOSO, YERKO WILLIAM</td>
+                        <td class="px-4 py-3">2.0</td>
+                        <td class="px-4 py-3">144.0</td>
+                        <td class="px-4 py-3">126.0</td>
+                        <td class="px-4 py-3">PERSONA PERSONA</td>
+                        <td class="px-4 py-3">NO</td>
+                        <td class="px-4 py-3">-</td>
+                        <td class="px-4 py-3">rut generico</td>
+                        <td class="px-4 py-3">MUESTRA ALEATORIA (DIPS) MUESTRA ALEATORIA (DIPS)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

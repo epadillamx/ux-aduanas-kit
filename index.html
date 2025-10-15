@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Courier - Índice de Vistas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <header class="bg-white shadow-lg border-b-4 border-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <img src="imagenes_sistema/color_MinInterior.png" alt="Gobierno de Chile" class="h-16">
+                    <div class="border-l-4 border-blue-600 pl-4">
+                        <h1 class="text-3xl font-bold text-gray-900">Sistema Courier</h1>
+                        <p class="text-sm text-gray-600 mt-1">Fiscalización Aduanera - Kit de Vistas Modernas</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2 bg-blue-50 px-4 py-2 rounded-lg">
+                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                            U
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Usuario Demo</p>
+                            <p class="text-xs text-gray-500">Modo Simulación</p>
+                        </div>
+                    </div>
+                    <a href="login.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center space-x-2">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Bienvenido al Sistema</h2>
+            <p class="text-lg text-gray-600">Selecciona una vista para explorar las funcionalidades del sistema</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Vista 1 -->
+            <a href="busqueda-listas-carga.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6">
+                    <div class="flex items-center justify-between text-white">
+                        <i class="fas fa-search fa-3x"></i>
+                        <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Vista 1</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Búsqueda de Listas de Carga</h3>
+                    <p class="text-gray-600 text-sm">Busca y filtra listas de carga por múltiples criterios</p>
+                </div>
+            </a>
+
+            <!-- Vista 2 -->
+            <a href="detalle-fiscalizacion.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                <div class="bg-gradient-to-r from-purple-600 to-purple-800 p-6">
+                    <div class="flex items-center justify-between text-white">
+                        <i class="fas fa-file-alt fa-3x"></i>
+                        <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Vista 2</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">Detalle de Fiscalización</h3>
+                    <p class="text-gray-600 text-sm">Visualiza el detalle completo de la fiscalización con guías asociadas</p>
+                </div>
+            </a>
+
+            <!-- Vista 3 -->
+            <a href="aceptacion-courier.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                <div class="bg-gradient-to-r from-green-600 to-green-800 p-6">
+                    <div class="flex items-center justify-between text-white">
+                        <i class="fas fa-check-circle fa-3x"></i>
+                        <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Vista 3</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">Aceptación de Courier</h3>
+                    <p class="text-gray-600 text-sm">Acepta o rechaza envíos de courier con observaciones</p>
+                </div>
+            </a>
+
+            <!-- Vista 4 -->
+            <a href="guias-asociadas-dropdown.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                <div class="bg-gradient-to-r from-orange-600 to-orange-800 p-6">
+                    <div class="flex items-center justify-between text-white">
+                        <i class="fas fa-box fa-3x"></i>
+                        <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Vista 4</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">Guías Asociadas</h3>
+                    <p class="text-gray-600 text-sm">Gestiona guías asociadas con selector de tipo de courier</p>
+                </div>
+            </a>
+
+            <!-- Vista 5 -->
+            <a href="marcaciones.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                <div class="bg-gradient-to-r from-red-600 to-red-800 p-6">
+                    <div class="flex items-center justify-between text-white">
+                        <i class="fas fa-tag fa-3x"></i>
+                        <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Vista 5</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">Marcaciones</h3>
+                    <p class="text-gray-600 text-sm">Crea y gestiona marcaciones para documentos y comercios</p>
+                </div>
+            </a>
+
+            <!-- Vista 6 -->
+            <a href="registro-accion.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 p-6">
+                    <div class="flex items-center justify-between text-white">
+                        <i class="fas fa-clipboard-list fa-3x"></i>
+                        <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Vista 6</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">Registro de Acción</h3>
+                    <p class="text-gray-600 text-sm">Registra acciones sobre manifiestos y guías</p>
+                </div>
+            </a>
+
+            <!-- Vista 7 -->
+            <a href="detalle-lista-carga.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                <div class="bg-gradient-to-r from-teal-600 to-teal-800 p-6">
+                    <div class="flex items-center justify-between text-white">
+                        <i class="fas fa-list fa-3x"></i>
+                        <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Vista 7</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">Detalle Lista de Carga</h3>
+                    <p class="text-gray-600 text-sm">Vista detallada de lista de carga con guías marcadas</p>
+                </div>
+            </a>
+
+            <!-- Vista 8 -->
+            <a href="resumen-estadistico.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                <div class="bg-gradient-to-r from-pink-600 to-pink-800 p-6">
+                    <div class="flex items-center justify-between text-white">
+                        <i class="fas fa-chart-bar fa-3x"></i>
+                        <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Vista 8</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Resumen Estadístico</h3>
+                    <p class="text-gray-600 text-sm">Consulta estadísticas y resúmenes de listas de carga</p>
+                </div>
+            </a>
+
+            <!-- Vista 9 -->
+            <a href="busqueda-guias.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                <div class="bg-gradient-to-r from-cyan-600 to-cyan-800 p-6">
+                    <div class="flex items-center justify-between text-white">
+                        <i class="fas fa-search fa-3x"></i>
+                        <span class="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Vista 9</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">Búsqueda de Guías</h3>
+                    <p class="text-gray-600 text-sm">Busca guías por consignante, consignatario o número</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="mt-12 bg-white rounded-xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                <i class="fas fa-info-circle mr-2 text-blue-600"></i>
+                Características del Sistema
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex items-start space-x-3">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-palette text-blue-600"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Diseño Moderno</h4>
+                        <p class="text-sm text-gray-600">Interfaz actualizada con TailwindCSS y componentes modernos</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-green-600"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Responsive</h4>
+                        <p class="text-sm text-gray-600">Adaptable a todos los dispositivos y tamaños de pantalla</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-bolt text-purple-600"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Optimizado</h4>
+                        <p class="text-sm text-gray-600">Carga rápida y experiencia de usuario fluida</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">© 2025 Gobierno de Chile - Sistema de Fiscalización Aduanera</p>
+            <p class="text-xs text-gray-400 mt-2">Todas las vistas fueron creadas basadas en mockups del sistema original</p>
+        </div>
+    </footer>
+</body>
+</html>
