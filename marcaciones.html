@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcaciones - Sistema Courier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f69b4',
+                        secondary: '#1e40af',
+                        accent: '#3b82f6'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <!-- Header Moderno -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <img src="imagenes_sistema/color_MinInterior.png" alt="Gobierno de Chile" class="h-12">
+                    <div class="border-l border-gray-300 pl-4">
+                        <h1 class="text-xl font-bold text-gray-900">Sistema Courier</h1>
+                        <p class="text-sm text-gray-500">Marcaciones</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-bell text-gray-600"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                            U
+                        </div>
+                        <span class="text-sm font-medium text-gray-700">Usuario</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Breadcrumb -->
+        <nav class="flex mb-6" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="#" class="text-gray-500 hover:text-primary">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-xs text-gray-400"></i>
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-500 hover:text-primary">Courier</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-xs text-gray-400"></i>
+                        <span class="ml-1 text-sm font-medium text-primary">Marcaciones</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Tarjeta Principal -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-primary to-blue-600 px-6 py-4">
+                <h2 class="text-white font-bold text-xl flex items-center">
+                    <i class="lucide lucide-tag w-6 h-6 mr-2"></i>
+                    Marcaciones
+                </h2>
+                <p class="text-blue-100 text-sm mt-1">S.S</p>
+            </div>
+
+            <div class="p-8">
+                <!-- Formulario -->
+                <form class="space-y-6">
+                    <!-- Motivo de Marca -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-3">
+                            <i class="fas fa-bookmark inline mr-1 text-primary"></i>
+                            Motivo de Marca:
+                        </label>
+                        <div class="relative">
+                            <select class="w-full px-4 py-3 pr-10 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none bg-white text-gray-900 font-medium">
+                                <option>DECLARACION</option>
+                                <option>FISICO</option>
+                                <option>RETENCION</option>
+                                <option>LIBRE</option>
+                                <option>TRANSITO</option>
+                            </select>
+                            <i class="fas fa-chevron-down text-gray-400 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <!-- Tipo Fiscalización -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-3">
+                            <i class="fas fa-shield-alt inline mr-1 text-primary"></i>
+                            Tipo Fiscalización:
+                        </label>
+                        <div class="relative">
+                            <select class="w-full px-4 py-3 pr-10 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none bg-white text-gray-900 font-medium">
+                                <option>COURIER</option>
+                                <option>DECLARACION</option>
+                                <option>FISICO</option>
+                                <option>MIXTO</option>
+                            </select>
+                            <i class="fas fa-chevron-down text-gray-400 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <!-- Descripción -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-3">
+                            <i class="lucide lucide-file-text w-4 h-4 inline mr-1 text-primary"></i>
+                            Descripción:
+                        </label>
+                        <textarea 
+                            rows="4" 
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                            placeholder="Ingrese la descripción de la marcación..."></textarea>
+                    </div>
+
+                    <!-- Fiscalización Sobre -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-3">
+                            <i class="fas fa-bullseye inline mr-1 text-primary"></i>
+                            Fiscalización Sobre:
+                        </label>
+                        <div class="flex items-center space-x-6">
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input 
+                                    type="radio" 
+                                    name="fiscalizacion" 
+                                    value="documento" 
+                                    checked
+                                    class="w-5 h-5 text-primary border-gray-300 focus:ring-primary">
+                                <span class="text-gray-900 font-medium">Documento</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input 
+                                    type="radio" 
+                                    name="fiscalizacion" 
+                                    value="comercio" 
+                                    class="w-5 h-5 text-primary border-gray-300 focus:ring-primary">
+                                <span class="text-gray-900 font-medium">Comercio Asociado</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Observación -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-3">
+                            <i class="fas fa-comment inline mr-1 text-primary"></i>
+                            Observación:
+                        </label>
+                        <input 
+                            type="text" 
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                            placeholder="Ingrese observaciones adicionales...">
+                    </div>
+
+                    <!-- Botón de Acción -->
+                    <div class="pt-6 flex justify-center">
+                        <button 
+                            type="submit" 
+                            class="px-12 py-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center space-x-3 text-lg">
+                            <i class="fas fa-save fa-lg"></i>
+                            <span>Generar Acción</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Información Adicional -->
+        <div class="mt-6 bg-blue-50 border-l-4 border-primary rounded-lg p-4">
+            <div class="flex items-start">
+                <i class="fas fa-info-circle text-primary mt-0.5 mr-3"></i>
+                <div>
+                    <h4 class="text-sm font-bold text-gray-900 mb-1">Información</h4>
+                    <p class="text-sm text-gray-700">Complete todos los campos requeridos para generar la marcación correctamente.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Lista de Carga - Sistema Courier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f69b4',
+                        secondary: '#1e40af',
+                        accent: '#3b82f6'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <!-- Header Moderno -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <img src="imagenes_sistema/color_MinInterior.png" alt="Gobierno de Chile" class="h-12">
+                    <div class="border-l border-gray-300 pl-4">
+                        <h1 class="text-xl font-bold text-gray-900">Sistema Courier</h1>
+                        <p class="text-sm text-gray-500">Detalle Lista de Carga</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-bell text-gray-600"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                            Y
+                        </div>
+                        <span class="text-sm font-medium text-gray-700">ymendez</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Breadcrumb -->
+        <nav class="flex mb-6" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="#" class="text-gray-500 hover:text-primary">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-xs text-gray-400"></i>
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-500 hover:text-primary">Courier</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-xs text-gray-400"></i>
+                        <span class="ml-1 text-sm font-medium text-primary">Detalle Lista de Carga</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Información Principal -->
+        <div class="bg-gradient-to-r from-primary to-blue-600 rounded-xl shadow-lg p-6 mb-6 text-white">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">Detalle Lista de Carga</h2>
+                    <p class="text-blue-100 text-sm">FISCALIZADOR: <span class="font-bold">ymendez</span></p>
+                </div>
+                <a href="courier.html" class="px-6 py-2.5 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold rounded-lg transition-all flex items-center space-x-2">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Volver a Courier</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="border-l-4 border-white/40 pl-4">
+                    <p class="text-blue-100 text-xs font-medium mb-1">NRO.LISTA DE CARGA</p>
+                    <p class="text-2xl font-bold">84751</p>
+                </div>
+                <div class="border-l-4 border-white/40 pl-4">
+                    <p class="text-blue-100 text-xs font-medium mb-1">FECHA ACEPTACIÓN</p>
+                    <p class="text-lg font-bold">14-01-2025 13:29</p>
+                </div>
+                <div class="border-l-4 border-white/40 pl-4">
+                    <p class="text-blue-100 text-xs font-medium mb-1">NRO. MASTER</p>
+                    <p class="text-2xl font-bold">789444</p>
+                </div>
+                <div class="border-l-4 border-white/40 pl-4">
+                    <p class="text-blue-100 text-xs font-medium mb-1">TOTAL PESO</p>
+                    <p class="text-2xl font-bold">11499.0</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 pt-6 border-t border-white/20">
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">NRO. VUELO/PATENTE</p>
+                    <p class="text-xl font-bold">033</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">CÍA. TRANSPORTE</p>
+                    <p class="text-sm font-bold">MENDEZ TRONCOSO, YERKO WILLIAM</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">CÍA. COURIER</p>
+                    <p class="text-sm font-bold">MENDEZ TRONCOSO, YERKO WILLIAM</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 pt-6 border-t border-white/20">
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">ORIGEN</p>
+                    <p class="text-lg font-bold">MIAMI</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">DESTINO</p>
+                    <p class="text-lg font-bold">SANTIAGO</p>
+                </div>
+                <div>
+                    <p class="text-blue-100 text-xs font-medium mb-1">TOTAL GUÍAS</p>
+                    <p class="text-lg font-bold">85</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón Registrar -->
+        <div class="flex justify-center mb-6">
+            <button id="btnRegistrar" onclick="registrar()" class="px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center space-x-3 text-lg">
+                <i class="fas fa-save fa-lg"></i>
+                <span>Registrar</span>
+            </button>
+        </div>
+
+        <!-- Resumen de Totales -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                    <i class="fas fa-calculator mr-2 text-primary"></i>
+                    Resumen de Peso
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center pb-2 border-b border-gray-200">
+                        <span class="text-gray-600">Total Peso:</span>
+                        <span class="text-xl font-bold text-gray-900">11499.0</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Total Valor:</span>
+                        <span class="text-xl font-bold text-green-600">$39055.0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                    <i class="fas fa-box-open mr-2 text-primary"></i>
+                    Estado de Guías
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center pb-2 border-b border-gray-200">
+                        <span class="text-gray-600">Total Guías:</span>
+                        <span class="text-xl font-bold text-gray-900">85</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Guías > $500:</span>
+                        <span class="text-xl font-bold text-orange-600">16</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Guías Asociadas -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-primary to-blue-600 px-6 py-4">
+                <h3 class="text-white font-bold text-lg flex items-center">
+                    <i class="fas fa-list mr-2"></i>
+                    GUÍAS ASOCIADAS CON MARCA: 12
+                </h3>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50 border-b border-gray-200">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">
+                                <input id="selectAll" type="checkbox" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Guía</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Consignatario</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Nro. Bultos</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Nro. Peso</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Nro. Valor</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">IVA-COS</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Consignante</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Rut Consignatario</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Partida</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Resultado Revisión</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Observaciones</th>
+                            <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Ver Ref Fiscalizador</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr class="hover:bg-blue-50 transition-colors">
+                            <td class="px-4 py-3">
+                                <input type="radio" name="select" class="w-4 h-4 text-primary border-gray-300 focus:ring-primary">
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-bold bg-gradient-to-r from-red-400 to-red-600 text-white shadow-sm">
+                                    GTIME-IVAD-02102025019
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-sm font-medium text-gray-900">MENDEZ TRONCOSO, YERKO WILLIAM</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">150.0</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">300.0</td>
+                            <td class="px-4 py-3 text-sm font-bold text-green-600">CON MARCA</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">-</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">CON MARCA</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">F-FISICO</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">-</td>
+                            <td class="px-4 py-3">
+                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                                    K.RETENCION
+                                </span>
+                            </td>
+                            <td class="px-4 py-3">
+                                <button class="text-primary hover:text-blue-700 font-semibold text-sm flex items-center">
+                                    <i class="fas fa-eye mr-1"></i>
+                                    Ver obs.
+                                </button>
+                            </td>
+                            <td class="px-4 py-3">
+                                <button class="text-primary hover:text-blue-700 font-semibold text-sm flex items-center">
+                                    <i class="lucide lucide-info w-4 h-4 mr-1"></i>
+                                    Más info.
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition-colors">
+                            <td class="px-4 py-3">
+                                <input type="radio" name="select" class="w-4 h-4 text-primary border-gray-300 focus:ring-primary">
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-white shadow-sm">
+                                    GTIME-IVAD-02102025018
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-sm font-medium text-gray-900">MENDEZ TRONCOSO, YERKO WILLIAM</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">150.0</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">300.0</td>
+                            <td class="px-4 py-3 text-sm font-bold text-green-600">CON MARCA</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">F-FISICO</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">-</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">-</td>
+                            <td class="px-4 py-3 text-sm text-gray-900">-</td>
+                            <td class="px-4 py-3">
+                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                    CENTR. PRESENTADO
+                                </span>
+                            </td>
+                            <td class="px-4 py-3">
+                                <button class="text-primary hover:text-blue-700 font-semibold text-sm flex items-center">
+                                    <i class="fas fa-eye mr-1"></i>
+                                    Ver obs.
+                                </button>
+                            </td>
+                            <td class="px-4 py-3">
+                                <button class="text-primary hover:text-blue-700 font-semibold text-sm flex items-center">
+                                    <i class="lucide lucide-info w-4 h-4 mr-1"></i>
+                                    Más info.
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Paginación -->
+            <div class="bg-gray-50 px-6 py-4 flex items-center justify-between border-t border-gray-200">
+                <div class="flex items-center text-sm text-gray-700">
+                    <span>Mostrando <span class="font-semibold">1-2</span> de <span class="font-semibold">12</span> guías</span>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        Anterior
+                    </button>
+                    <button class="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium">1</button>
+                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">2</button>
+                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        Siguiente
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toast-root" class="fixed bottom-4 right-4 z-[100] space-y-2"></div>
+
+    <!-- Modal Detalle Registro (solo informativa) -->
+    <div id="modalRegistro" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full overflow-hidden">
+            <div class="bg-gradient-to-r from-primary to-blue-600 p-6 text-white">
+                <h3 class="text-2xl font-bold flex items-center"><i class="fas fa-clipboard-check mr-3"></i>Registro de Resultados</h3>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="md:col-span-3">
+                        <p class="text-xs text-gray-500 font-semibold mb-1">N° Guía Courier</p>
+                        <p id="md-guia" class="font-bold text-gray-900">GTIME-IVAD-02102025017</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Naviera</p>
+                        <p class="font-semibold text-gray-900">MENDEZ TRONCOSO, YERKO WILLIAM</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Lugar Emisión</p>
+                        <p class="font-semibold text-gray-900">—</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Fecha Emisión</p>
+                        <p class="font-semibold text-gray-900">02/10/2025</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Consignante</p>
+                        <p class="font-semibold text-gray-900">nombre nuevo consignante ERRAZURIZ 755</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Consignatario</p>
+                        <p class="font-semibold text-gray-900">Rut inicial 88 Dirección rut prueba</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Transportista</p>
+                        <p class="font-semibold text-gray-900">MENDEZ TRONCOSO, YERKO WILLIAM ERRAZURIZ 755</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Lugar Recepción</p>
+                        <p class="font-semibold text-gray-900">—</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Puerto Carga</p>
+                        <p class="font-semibold text-gray-900">Tocumen International (Panama City)</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Puerto Descarga</p>
+                        <p class="font-semibold text-gray-900">Arturo Merino Benítez (Santiago)</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Lugar Destino</p>
+                        <p class="font-semibold text-gray-900">—</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Creador</p>
+                        <p class="font-semibold text-gray-900">ymendez</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Fecha Creación</p>
+                        <p class="font-semibold text-gray-900">02/10/2025</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Total Items</p>
+                        <p class="font-semibold text-gray-900">1</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Total Bultos</p>
+                        <p class="font-semibold text-gray-900">3.0</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Total Volumen</p>
+                        <p class="font-semibold text-gray-900">0.0</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-xs text-gray-500 font-semibold mb-1">Total Peso</p>
+                        <p class="font-semibold text-gray-900">150.0 KGM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Select all
+        const selectAll = document.getElementById('selectAll');
+        if (selectAll) {
+            selectAll.addEventListener('change', (e) => {
+                document.querySelectorAll('.row-select').forEach(cb => cb.checked = e.target.checked);
+            });
+        }
+
+        function getSeleccionadas() {
+            const checks = Array.from(document.querySelectorAll('.row-select:checked'));
+            const radios = Array.from(document.querySelectorAll('input[type="radio"][name="select"]:checked'));
+            const all = checks.concat(radios);
+            return all.map(el => el.closest('tr')).filter(Boolean);
+        }
+
+        function registrar() {
+            const filas = getSeleccionadas();
+            if (filas.length === 0) {
+                showToast('warning', 'Debe seleccionar al menos una guía para registrar.');
+                return;
+            }
+
+            // Tomar la primera fila seleccionada y extraer datos básicos
+            const tr = filas[0];
+            const celdas = tr.querySelectorAll('td');
+            const guia = (celdas[1]?.innerText || '').trim() || '—';
+
+            const guiaEl = document.getElementById('md-guia');
+            if (guiaEl) guiaEl.textContent = guia;
+
+            abrirModal();
+        }
+
+        function abrirModal() {
+            document.getElementById('modalRegistro').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function cerrarModal() {
+            document.getElementById('modalRegistro').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Toast utility
+        function showToast(type = 'info', message = '') {
+            const rootId = 'toast-root';
+            let root = document.getElementById(rootId);
+            if (!root) {
+                root = document.createElement('div');
+                root.id = rootId;
+                root.className = 'fixed bottom-4 right-4 z-[100] space-y-2';
+                document.body.appendChild(root);
+            }
+
+            const colors = {
+                success: 'bg-green-100 text-green-800 border-green-200',
+                error: 'bg-red-100 text-red-800 border-red-200',
+                warning: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+                info: 'bg-blue-100 text-blue-800 border-blue-200'
+            };
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-times-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
+
+            const wrapper = document.createElement('div');
+            wrapper.className = `pointer-events-auto border ${colors[type] || colors.info} rounded-lg shadow-lg px-4 py-3 flex items-start space-x-3 animate-[fadeIn_0.2s_ease-out]`;
+            wrapper.innerHTML = `
+                <i class="fas ${icons[type] || icons.info} mt-0.5"></i>
+                <div class="text-sm font-medium">${message}</div>
+                <button aria-label="Cerrar" class="ml-2 text-inherit/70 hover:text-inherit"><i class=\"fas fa-times\"></i></button>
+            `;
+
+            const closeBtn = wrapper.querySelector('button');
+            const remove = () => {
+                wrapper.style.animation = 'fadeOut 0.2s ease-in forwards';
+                setTimeout(() => wrapper.remove(), 180);
+            };
+            closeBtn.addEventListener('click', remove);
+
+            root.appendChild(wrapper);
+            setTimeout(remove, 3500);
+        }
+
+        // Keyframes
+        (function ensureKeyframes(){
+            if (document.getElementById('toast-keyframes')) return;
+            const style = document.createElement('style');
+            style.id = 'toast-keyframes';
+            style.textContent = `
+                @keyframes fadeIn { from { opacity: 0; transform: translateY(4px);} to { opacity: 1; transform: translateY(0);} }
+                @keyframes fadeOut { from { opacity: 1; transform: translateY(0);} to { opacity: 0; transform: translateY(4px);} }
+            `;
+            document.head.appendChild(style);
+        })();
+
+        // Cerrar modal con clic fuera y tecla ESC
+        document.getElementById('modalRegistro').addEventListener('click', function(e){
+            if (e.target === this) cerrarModal();
+        });
+        document.addEventListener('keydown', function(e){
+            if (e.key === 'Escape') {
+                const m = document.getElementById('modalRegistro');
+                if (!m.classList.contains('hidden')) cerrarModal();
+            }
+        });
+    </script>
+</body>
+</html>

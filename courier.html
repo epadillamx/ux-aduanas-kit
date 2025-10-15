@@ -4,419 +4,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courier - Sistema Fiscalización</title>
-
-    <!-- Framework Gobierno Digital Chile - CSS -->
-    <link rel="stylesheet" href="node_modules/@gobdigital-cl/gob.cl/dist/css/gob.cl.css">
-
-    <!-- Tipografías Roboto y Roboto Slab -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: #f5f5f5;
-            font-family: 'Roboto', sans-serif;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f69b4',
+                        secondary: '#1e40af',
+                        accent: '#3b82f6'
+                    }
+                }
+            }
         }
-
-        .navbar-top {
-            background: linear-gradient(to right, #0f69b4, #0056a3);
-            color: white;
-            padding: 0.5rem 0;
-        }
-
-        .sidebar {
-            background-color: #003d82;
-            min-height: calc(100vh - 60px);
-            padding: 0;
-        }
-
-        .sidebar-header {
-            background-color: #002855;
-            padding: 1rem;
-            text-align: center;
-            color: white;
-        }
-
-        .sidebar-header img {
-            max-width: 80px;
-            margin-bottom: 0.5rem;
-        }
-
-        .sidebar-title {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .menu-section {
-            background-color: #004a99;
-            color: white;
-            padding: 0.5rem 1rem;
-            font-weight: 500;
-            font-size: 0.85rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .menu-subsection {
-            background-color: #003d82;
-            padding: 0.4rem 1rem;
-            color: #a8d5ff;
-            font-size: 0.8rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .menu-item {
-            background-color: #0056a3;
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border: none;
-            width: 100%;
-            text-align: left;
-            font-size: 0.85rem;
-            cursor: pointer;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .menu-item:hover {
-            background-color: #0066cc;
-        }
-
-        .menu-item.active {
-            background-color: #0073e6;
-            font-weight: 500;
-        }
-
-        .content-area {
-            background-color: white;
-            padding: 1.5rem;
-            margin: 1rem;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .tabs-header {
-            background-color: #b8d4f1;
-            border: 1px solid #8cb3d9;
-            display: flex;
-            margin-bottom: 1rem;
-        }
-
-        .tab-button {
-            padding: 0.5rem 1.5rem;
-            background-color: #b8d4f1;
-            border: none;
-            border-right: 1px solid #8cb3d9;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .tab-button:hover {
-            background-color: #a0c4e8;
-        }
-
-        .search-section {
-            background-color: #d9e8f7;
-            border: 1px solid #8cb3d9;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .search-section h3 {
-            font-size: 1rem;
-            color: #003d82;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 0.8rem;
-            align-items: center;
-        }
-
-        .form-group-inline {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .form-group-inline label {
-            margin: 0;
-            white-space: nowrap;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #003d82;
-        }
-
-        .form-control-sm {
-            padding: 0.3rem 0.5rem;
-            font-size: 0.85rem;
-            height: 28px;
-        }
-
-        .date-input {
-            width: 100px;
-        }
-
-        .btn-sm {
-            padding: 0.3rem 0.8rem;
-            font-size: 0.85rem;
-        }
-
-        .results-section {
-            background-color: #d9e8f7;
-            border: 1px solid #8cb3d9;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .results-header {
-            background-color: #4a8bc2;
-            color: white;
-            padding: 0.5rem 1rem;
-            margin: -1rem -1rem 1rem -1rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-
-        .table-responsive {
-            background-color: white;
-            border: 1px solid #8cb3d9;
-        }
-
-        .table-courier {
-            width: 100%;
-            font-size: 0.8rem;
-            margin: 0;
-        }
-
-        .table-courier thead {
-            background-color: #4a8bc2;
-            color: white;
-        }
-
-        .table-courier thead th {
-            padding: 0.4rem;
-            font-weight: 500;
-            border: 1px solid #fff;
-            text-align: center;
-            font-size: 0.75rem;
-        }
-
-        .table-courier tbody td {
-            padding: 0.4rem;
-            border: 1px solid #ddd;
-            font-size: 0.8rem;
-        }
-
-        .table-courier tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .table-courier tbody tr:hover {
-            background-color: #e8f4ff;
-        }
-
-        .radio-column {
-            text-align: center;
-            width: 30px;
-        }
-
-        .btn-calendar {
-            background-color: #fff;
-            border: 1px solid #ced4da;
-            padding: 0.2rem 0.4rem;
-            cursor: pointer;
-        }
-
-        .logout-btn {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 0.3rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        .logout-btn:hover {
-            background-color: #c82333;
-        }
-    </style>
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <!-- Navbar superior -->
-    <nav class="navbar-top">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-end align-items-center w-100 px-3">
-                <button class="logout-btn" onclick="cerrarSesion()">Cerrar Sesión</button>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <!-- Header Moderno -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <img src="imagenes_sistema/color_MinInterior.png" alt="Gobierno de Chile" class="h-12">
+                    <div class="border-l border-gray-300 pl-4">
+                        <h1 class="text-xl font-bold text-gray-900">Sistema Courier</h1>
+                        <p class="text-sm text-gray-500">Fiscalización Aduanera</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-bell text-gray-600"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                            U
+                        </div>
+                        <span class="text-sm font-medium text-gray-700">Usuario</span>
+                    </div>
+                    <button onclick="cerrarSesion()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center space-x-2">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </button>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-2 p-0 sidebar">
-                <div class="sidebar-header">
-                    <img src="https://framework.digital.gob.cl/images/logo_gobcl.svg" alt="Gobierno de Chile">
-                    <div class="sidebar-title">Sistema Fiscalización</div>
+    <!-- Navegación lateral y contenido -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-lg min-h-screen">
+            <nav class="p-4 space-y-2">
+                <div class="px-4 py-2 bg-gray-100 rounded-lg">
+                    <p class="text-xs font-bold text-gray-600 uppercase">Definiciones Generales</p>
+                </div>
+                <div class="px-4 py-1">
+                    <p class="text-xs text-gray-500">Movimientos</p>
+                </div>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 bg-primary text-white rounded-lg">
+                    <i class="fas fa-box"></i>
+                    <span class="font-medium">Courier</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="flex-1 p-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Courier</h2>
+
+                <!-- Tabs -->
+                <div class="bg-white rounded-lg shadow-sm mb-6 overflow-hidden">
+                    <div class="flex border-b border-gray-200" id="tabs">
+                        <button id="tabSeleccionar" class="px-6 py-3 font-semibold border-r border-gray-200 bg-primary text-white">
+                            Seleccionar
+                        </button>
+                        <button id="tabRegistro" class="px-6 py-3 font-semibold border-r border-gray-200 text-gray-700 hover:bg-gray-50">
+                            Registro de Resultados
+                        </button>
+                        <button id="tabResumen" class="px-6 py-3 font-semibold text-gray-700 hover:bg-gray-50">
+                            Resumen
+                        </button>
+                    </div>
                 </div>
 
-                <ul class="sidebar-menu">
-                    <li class="menu-section">Definiciones Generales:</li>
-                    <li class="menu-subsection">Movimientos</li>
-                    <li><button class="menu-item active">Courier</button></li>
-                </ul>
-            </div>
+                <!-- Sección de Búsqueda -->
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-search mr-2 text-primary"></i>
+                        Selecciones
+                    </h3>
 
-            <!-- Contenido principal -->
-            <div class="col-md-10">
-                <div class="content-area">
-                    <h2 class="mb-3" style="color: #003d82; font-size: 1.5rem; font-family: 'Roboto Slab', serif;">
-                        Courier
-                    </h2>
-
-                    <!-- Tabs -->
-                    <div class="tabs-header">
-                        <button class="tab-button">Seleccionar</button>
-                        <button class="tab-button">Registro de Resultados</button>
-                        <button class="tab-button">Resumen</button>
-                    </div>
-
-                    <!-- Sección de Selecciones -->
-                    <div class="search-section">
-                        <h3>Selecciones:</h3>
-
-                        <div class="form-row">
-                            <div class="form-group-inline">
-                                <label for="numeroManifiesto">Número Manifiesto:</label>
-                                <input type="text" id="numeroManifiesto" class="form-control form-control-sm" style="width: 150px;">
+                    <form class="space-y-4">
+                        <!-- Primera fila -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Número Manifiesto</label>
+                                <input type="text" id="numeroManifiesto" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                             </div>
-
-                            <div class="form-group-inline">
-                                <label for="guiaCourier">Guía Courier:</label>
-                                <input type="text" id="guiaCourier" class="form-control form-control-sm" style="width: 150px;">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Guía Courier</label>
+                                <input type="text" id="guiaCourier" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                             </div>
-
-                            <div class="form-group-inline">
-                                <label for="tipo">Tipo</label>
-                                <select id="tipo" class="form-control form-control-sm" style="width: 120px;">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Tipo</label>
+                                <select id="tipo" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                                     <option value="todos">Todos</option>
                                     <option value="courier_normal">Courier Normal</option>
                                     <option value="courier_expreso">Courier Expreso</option>
                                 </select>
                             </div>
-
-                            <div class="form-group-inline">
-                                <label for="emisor">Emisor:</label>
-                                <button class="btn btn-secondary btn-sm">Buscar Emisor</button>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Emisor</label>
+                                <button type="button" class="w-full px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors flex items-center justify-center space-x-2">
+                                    <i class="fas fa-search"></i>
+                                    <span>Buscar Emisor</span>
+                                </button>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group-inline">
-                                <label for="fechaEmisionDesde">Fecha Emisión Desde:</label>
-                                <input type="text" id="fechaEmisionDesde" class="form-control form-control-sm date-input" value="15/10/2025">
-                                <button class="btn-calendar">📅</button>
-                                <span class="text-muted small">[dd/MM/yyyy]</span>
+                        <!-- Segunda fila -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Fecha Emisión Desde</label>
+                                <input type="date" id="fechaEmisionDesde" value="2025-10-15" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Fecha Emisión Hasta</label>
+                                <input type="date" id="fechaEmisionHasta" value="2025-10-15" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group-inline">
-                                <label for="fechaEmisionHasta">Fecha Emisión Hasta:</label>
-                                <input type="text" id="fechaEmisionHasta" class="form-control form-control-sm date-input" value="15/10/2025">
-                                <button class="btn-calendar">📅</button>
-                                <span class="text-muted small">[dd/MM/yyyy]</span>
-                            </div>
-                        </div>
-
-                        <div class="form-row align-items-center">
-                            <div class="form-group-inline">
-                                <label for="mostrar">Mostrar</label>
-                                <select id="mostrar" class="form-control form-control-sm" style="width: 120px;">
+                        <!-- Tercera fila -->
+                        <div class="flex items-end space-x-4">
+                            <div class="flex-1">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Mostrar</label>
+                                <select id="mostrar" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                                     <option value="pendientes">Pendientes</option>
                                     <option value="procesados">Procesados</option>
                                     <option value="todos">Todos</option>
                                 </select>
                             </div>
-
-                            <button class="btn btn-primary btn-sm" onclick="buscarListasCarga()">LISTAS DE CARGA</button>
-                            <button class="btn btn-secondary btn-sm" onclick="modificarMarca()">ModificaMarca</button>
+                            <button type="button" onclick="buscarListasCarga()" class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors flex items-center space-x-2">
+                                <i class="fas fa-list"></i>
+                                <span>LISTAS DE CARGA</span>
+                            </button>
+                            <button type="button" onclick="modificarMarca()" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center space-x-2">
+                                <i class="fas fa-edit"></i>
+                                <span>ModificaMarca</span>
+                            </button>
                         </div>
+                    </form>
+                </div>
+
+                <!-- Resultados -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-primary to-blue-600 px-6 py-4">
+                        <h3 class="text-white font-bold text-lg flex items-center">
+                            <i class="fas fa-clipboard-list mr-2"></i>
+                            Listas de Carga Encontradas: <span id="resultCount" class="ml-2">1</span>
+                        </h3>
                     </div>
 
-                    <!-- Resultados -->
-                    <div class="results-section">
-                        <div class="results-header">
-                            Listas de Carga Encontradas: <span id="resultCount">1</span>
-                        </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 border-b border-gray-200">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase"></th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Manifiesto</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Tipo</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Nro. Master/MIC</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Nro. Vuelo/Patente</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Cía. Courier</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Peso Bruto</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Valor Total</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Total Guías</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Guías Select.</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Guías $2500 USD</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Revisado</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Conformado</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Fecha Aceptación</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Fecha Impresión</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaResultados" class="bg-white divide-y divide-gray-200">
+                                <!-- Los resultados se cargarán aquí -->
+                            </tbody>
+                        </table>
+                    </div>
 
-                        <div class="table-responsive">
-                            <table class="table-courier">
-                                <thead>
-                                    <tr>
-                                        <th class="radio-column"></th>
-                                        <th>Manifiesto</th>
-                                        <th>Tipo</th>
-                                        <th>Nro. Master/MIC</th>
-                                        <th>Nro. Vuelo/Patente</th>
-                                        <th>Cía. Courier</th>
-                                        <th>Peso<br>Bruto</th>
-                                        <th>Valor<br>Total</th>
-                                        <th>Total<br>Guías</th>
-                                        <th>Guías<br>Select.</th>
-                                        <th>Guías<br>$2500 USD.</th>
-                                        <th>Revisado</th>
-                                        <th>Conformado</th>
-                                        <th>Fecha de<br>Aceptación</th>
-                                        <th>Fecha<br>Impresión</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tablaResultados">
-                                    <tr>
-                                        <td class="radio-column">
-                                            <input type="radio" name="selectCarga" value="84751">
-                                        </td>
-                                        <td>84751</td>
-                                        <td>Courier Normal</td>
-                                        <td>789444</td>
-                                        <td>033</td>
-                                        <td>MENDEZ TRONCOSO, YERKO WILLIAM</td>
-                                        <td style="text-align: right;">11499.0</td>
-                                        <td style="text-align: right;">39055.0</td>
-                                        <td style="text-align: center;">85</td>
-                                        <td style="text-align: center;">16</td>
-                                        <td style="text-align: center;">16</td>
-                                        <td style="text-align: center;">NO</td>
-                                        <td style="text-align: center;">SI</td>
-                                        <td>18-01-2025<br>13:29</td>
-                                        <td>19-01-2025<br>19:01</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <!-- Paginación -->
+                    <div class="bg-gray-50 px-6 py-4 flex items-center justify-between border-t border-gray-200">
+                        <div class="flex items-center text-sm text-gray-700">
+                            <span>Mostrando <span class="font-semibold">1</span> de <span class="font-semibold">1</span> resultados</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50" disabled>
+                                Anterior
+                            </button>
+                            <button class="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium">1</button>
+                            <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50" disabled>
+                                Siguiente
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
-
-    <!-- jQuery requerido por el framework -->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-
-    <!-- Popper.js requerido por Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <!-- Framework Gobierno Digital Chile - JS -->
-    <script src="node_modules/@gobdigital-cl/gob.cl/dist/js/gob.cl.js"></script>
 
     <script>
         // Datos de ejemplo
@@ -456,7 +252,6 @@
                 mostrar
             });
 
-            // Aquí iría la lógica de búsqueda en el backend
             cargarResultados(listasCargas);
         }
 
@@ -467,24 +262,36 @@
             resultCount.textContent = datos.length;
 
             tbody.innerHTML = datos.map((item, index) => `
-                <tr>
-                    <td class="radio-column">
-                        <input type="radio" name="selectCarga" value="${item.manifiesto}">
+                <tr class="hover:bg-blue-50 transition-colors">
+                    <td class="px-4 py-3 text-center">
+                        <input type="radio" name="selectCarga" value="${item.manifiesto}" class="w-4 h-4 text-primary border-gray-300 focus:ring-primary">
                     </td>
-                    <td>${item.manifiesto}</td>
-                    <td>${item.tipo}</td>
-                    <td>${item.master}</td>
-                    <td>${item.vuelo}</td>
-                    <td>${item.compania}</td>
-                    <td style="text-align: right;">${item.pesoBruto}</td>
-                    <td style="text-align: right;">${item.valorTotal}</td>
-                    <td style="text-align: center;">${item.totalGuias}</td>
-                    <td style="text-align: center;">${item.guiasSelect}</td>
-                    <td style="text-align: center;">${item.guias2500}</td>
-                    <td style="text-align: center;">${item.revisado}</td>
-                    <td style="text-align: center;">${item.conformado}</td>
-                    <td>${item.fechaAceptacion.replace(' ', '<br>')}</td>
-                    <td>${item.fechaImpresion.replace(' ', '<br>')}</td>
+                    <td class="px-4 py-3 text-sm">
+                        <a href="${window.__targetDetalles || 'guias-asociadas-dropdown.html'}?manifiesto=${item.manifiesto}" class="font-semibold text-primary hover:text-blue-700 hover:underline" id="link-manifiesto-${index}">
+                            ${item.manifiesto}
+                        </a>
+                    </td>
+                    <td class="px-4 py-3 text-sm text-gray-900">${item.tipo}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900">${item.master}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900">${item.vuelo}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900">${item.compania}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900 text-right">${item.pesoBruto.toLocaleString()}</td>
+                    <td class="px-4 py-3 text-sm font-semibold text-green-600 text-right">$${item.valorTotal.toLocaleString()}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900 text-center">${item.totalGuias}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900 text-center">${item.guiasSelect}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900 text-center">${item.guias2500}</td>
+                    <td class="px-4 py-3 text-center">
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${item.revisado === 'SI' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                            ${item.revisado}
+                        </span>
+                    </td>
+                    <td class="px-4 py-3 text-center">
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${item.conformado === 'SI' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                            ${item.conformado}
+                        </span>
+                    </td>
+                    <td class="px-4 py-3 text-sm text-gray-900">${item.fechaAceptacion}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900">${item.fechaImpresion}</td>
                 </tr>
             `).join('');
         }
@@ -493,7 +300,7 @@
             const seleccionado = document.querySelector('input[name="selectCarga"]:checked');
 
             if (!seleccionado) {
-                alert('Por favor seleccione una lista de carga');
+                showToast('warning', 'Por favor seleccione una lista de carga');
                 return;
             }
 
@@ -503,23 +310,113 @@
 
         function cerrarSesion() {
             if (confirm('¿Está seguro que desea cerrar sesión?')) {
+                showToast('success', 'Sesión cerrada con éxito');
                 window.location.href = 'login.html';
             }
         }
 
-        // Formateo de fechas
-        document.querySelectorAll('.date-input').forEach(input => {
-            input.addEventListener('blur', function() {
-                // Validación y formato de fecha
-                const fecha = this.value;
-                console.log('Fecha ingresada:', fecha);
-            });
-        });
+        // Tabs: control de destino de detalles
+        function setActiveTab(tab) {
+            const sel = document.getElementById('tabSeleccionar');
+            const reg = document.getElementById('tabRegistro');
+            const res = document.getElementById('tabResumen');
 
-        // Cargar datos al iniciar
+            // reset estilos
+            [sel, reg, res].forEach(el => el.className = 'px-6 py-3 font-semibold border-r border-gray-200 text-gray-700 hover:bg-gray-50');
+
+            if (tab === 'seleccionar') {
+                window.__targetDetalles = 'guias-asociadas-dropdown.html';
+                sel.className = 'px-6 py-3 font-semibold border-r border-gray-200 bg-primary text-white';
+            } else if (tab === 'registro') {
+                window.__targetDetalles = 'detalle-lista-carga.html';
+                reg.className = 'px-6 py-3 font-semibold border-r border-gray-200 bg-primary text-white';
+            } else if (tab === 'resumen') {
+                window.__targetDetalles = 'resumen-estadistico.html';
+                res.className = 'px-6 py-3 font-semibold border-gray-200 bg-primary text-white';
+            } else {
+                window.__targetDetalles = 'guias-asociadas-dropdown.html';
+                res.className = 'px-6 py-3 font-semibold border-gray-200 bg-primary text-white';
+            }
+
+            // actualizar href de los manifiestos renderizados (si existen)
+            const links = document.querySelectorAll('[id^="link-manifiesto-"]');
+            links.forEach(a => {
+                const url = new URL(a.href, window.location.origin);
+                const manifiesto = url.searchParams.get('manifiesto');
+                a.href = `${window.__targetDetalles}?manifiesto=${manifiesto}`;
+            });
+        }
+
+        // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
+            window.__targetDetalles = 'guias-asociadas-dropdown.html';
             cargarResultados(listasCargas);
+            setActiveTab('seleccionar');
+
+            document.getElementById('tabSeleccionar').addEventListener('click', () => setActiveTab('seleccionar'));
+            document.getElementById('tabRegistro').addEventListener('click', () => setActiveTab('registro'));
+            document.getElementById('tabResumen').addEventListener('click', () => setActiveTab('resumen'));
         });
+        
+        // Toast utility
+        function showToast(type = 'info', message = '') {
+            const rootId = 'toast-root';
+            let root = document.getElementById(rootId);
+            if (!root) {
+                root = document.createElement('div');
+                root.id = rootId;
+                root.className = 'fixed bottom-4 right-4 z-[100] space-y-2';
+                document.body.appendChild(root);
+            }
+
+            const colors = {
+                success: 'bg-green-100 text-green-800 border-green-200',
+                error: 'bg-red-100 text-red-800 border-red-200',
+                warning: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+                info: 'bg-blue-100 text-blue-800 border-blue-200'
+            };
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-times-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
+
+            const wrapper = document.createElement('div');
+            wrapper.className = `pointer-events-auto border ${colors[type] || colors.info} rounded-lg shadow-lg px-4 py-3 flex items-start space-x-3 animate-[fadeIn_0.2s_ease-out]`;
+            wrapper.innerHTML = `
+                <i class="fas ${icons[type] || icons.info} mt-0.5"></i>
+                <div class="text-sm font-medium">${message}</div>
+                <button aria-label="Cerrar" class="ml-2 text-inherit/70 hover:text-inherit">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+
+            const closeBtn = wrapper.querySelector('button');
+            const remove = () => {
+                wrapper.style.animation = 'fadeOut 0.2s ease-in forwards';
+                setTimeout(() => wrapper.remove(), 180);
+            };
+            closeBtn.addEventListener('click', remove);
+
+            root.appendChild(wrapper);
+            setTimeout(remove, 3500);
+        }
+
+        // Keyframes
+        (function ensureKeyframes(){
+            if (document.getElementById('toast-keyframes')) return;
+            const style = document.createElement('style');
+            style.id = 'toast-keyframes';
+            style.textContent = `
+                @keyframes fadeIn { from { opacity: 0; transform: translateY(4px);} to { opacity: 1; transform: translateY(0);} }
+                @keyframes fadeOut { from { opacity: 1; transform: translateY(0);} to { opacity: 0; transform: translateY(4px);} }
+            `;
+            document.head.appendChild(style);
+        })();
     </script>
+    
+    <!-- Toast Container -->
+    <div id="toast-root" class="fixed bottom-4 right-4 z-[100] space-y-2"></div>
 </body>
 </html>
