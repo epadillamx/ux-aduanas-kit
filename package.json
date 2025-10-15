@@ -1,0 +1,16 @@
+{
+  "name": "fiscalizacion",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "dev": "http-server -p 3000 -a 0.0.0.0 --cors --no-dotfiles -c-1"
+  },
+  "dependencies": {
+    "@gobdigital-cl/gob.cl": "^3.0.10"
+  }
+}

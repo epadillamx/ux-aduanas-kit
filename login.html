@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema de Fiscalización</title>
+
+    <!-- Framework Gobierno Digital Chile - CSS -->
+    <link rel="stylesheet" href="node_modules/@gobdigital-cl/gob.cl/dist/css/gob.cl.css">
+
+    <!-- Tipografías Roboto y Roboto Slab -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 2rem;
+            max-width: 450px;
+            width: 100%;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .login-header img {
+            max-width: 200px;
+            margin-bottom: 1rem;
+        }
+        .login-header h1 {
+            font-size: 1.75rem;
+            color: #0f69b4;
+            font-family: 'Roboto Slab', serif;
+            margin-bottom: 0.5rem;
+        }
+        .login-header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Gobierno de Chile -->
+    <header class="navbar navbar-expand-lg navbar-dark bg-gob">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="navbar-brand-text">Gobierno de Chile</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenedor de Login -->
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="https://framework.digital.gob.cl/images/logo_gobcl.svg" alt="Gobierno de Chile">
+                <h1>Sistema de Fiscalización</h1>
+                <p>Ingrese sus credenciales para acceder</p>
+            </div>
+
+            <form id="loginForm">
+                <!-- Campo RUT -->
+                <div class="form-group">
+                    <label for="rut">RUT</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="rut"
+                        name="rut"
+                        placeholder="12.345.678-9"
+                        required
+                        aria-describedby="rutHelp">
+                    <small id="rutHelp" class="form-text text-muted">
+                        Ingrese su RUT sin puntos y con guión
+                    </small>
+                </div>
+
+                <!-- Campo Contraseña -->
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="Ingrese su contraseña"
+                        required>
+                </div>
+
+                <!-- Recordar sesión -->
+                <div class="form-check mb-3">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="remember">
+                    <label class="form-check-label" for="remember">
+                        Recordar mi sesión
+                    </label>
+                </div>
+
+                <!-- Mensaje de error -->
+                <div id="errorMessage" class="alert alert-danger d-none" role="alert">
+                    <strong>Error:</strong> <span id="errorText"></span>
+                </div>
+
+                <!-- Botones -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Ingresar
+                    </button>
+                </div>
+
+                <div class="text-center mt-3">
+                    <a href="#" class="text-muted">¿Olvidó su contraseña?</a>
+                </div>
+            </form>
+
+            <!-- Información adicional -->
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="text-muted small mb-2">¿No tiene cuenta?</p>
+                <a href="#" class="btn btn-outline-secondary btn-sm">
+                    Solicitar acceso
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gob text-white py-3 mt-auto">
+        <div class="container text-center">
+            <p class="mb-0 small">© 2025 Gobierno de Chile - Sistema de Fiscalización</p>
+        </div>
+    </footer>
+
+    <!-- jQuery requerido por el framework -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- Popper.js requerido por Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Framework Gobierno Digital Chile - JS -->
+    <script src="node_modules/@gobdigital-cl/gob.cl/dist/js/gob.cl.js"></script>
+
+    <!-- Script de validación del formulario -->
+    <script>
+        // Validación básica de RUT chileno
+        function validarRUT(rut) {
+            // Limpiar RUT
+            rut = rut.replace(/\./g, '').replace(/-/g, '');
+
+            if (rut.length < 2) return false;
+
+            const cuerpo = rut.slice(0, -1);
+            const dv = rut.slice(-1).toUpperCase();
+
+            // Calcular dígito verificador
+            let suma = 0;
+            let multiplo = 2;
+
+            for (let i = cuerpo.length - 1; i >= 0; i--) {
+                suma += parseInt(cuerpo.charAt(i)) * multiplo;
+                multiplo = multiplo === 7 ? 2 : multiplo + 1;
+            }
+
+            const dvEsperado = 11 - (suma % 11);
+            const dvCalculado = dvEsperado === 11 ? '0' : dvEsperado === 10 ? 'K' : dvEsperado.toString();
+
+            return dv === dvCalculado;
+        }
+
+        // Formatear RUT mientras se escribe
+        document.getElementById('rut').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\./g, '').replace(/-/g, '');
+
+            if (value.length > 1) {
+                const cuerpo = value.slice(0, -1);
+                const dv = value.slice(-1);
+
+                // Formatear con puntos
+                const cuerpoFormateado = cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+                e.target.value = cuerpoFormateado + '-' + dv;
+            }
+        });
+
+        // Manejo del envío del formulario
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const errorDiv = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+
+            // Ocultar mensajes de error previos
+            errorDiv.classList.add('d-none');
+
+            // Obtener valores
+            const rut = document.getElementById('rut').value;
+            const password = document.getElementById('password').value;
+
+            // Validar RUT
+            if (!validarRUT(rut)) {
+                errorText.textContent = 'El RUT ingresado no es válido';
+                errorDiv.classList.remove('d-none');
+                return;
+            }
+
+            // Validar contraseña
+            if (password.length < 6) {
+                errorText.textContent = 'La contraseña debe tener al menos 6 caracteres';
+                errorDiv.classList.remove('d-none');
+                return;
+            }
+
+            // Aquí iría la lógica de autenticación
+            console.log('Login exitoso:', {
+                rut: rut,
+                remember: document.getElementById('remember').checked
+            });
+
+            // Ejemplo de éxito
+            alert('Credenciales válidas. Redirigiendo...');
+            // window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

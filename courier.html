@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier - Sistema Fiscalización</title>
+
+    <!-- Framework Gobierno Digital Chile - CSS -->
+    <link rel="stylesheet" href="node_modules/@gobdigital-cl/gob.cl/dist/css/gob.cl.css">
+
+    <!-- Tipografías Roboto y Roboto Slab -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar-top {
+            background: linear-gradient(to right, #0f69b4, #0056a3);
+            color: white;
+            padding: 0.5rem 0;
+        }
+
+        .sidebar {
+            background-color: #003d82;
+            min-height: calc(100vh - 60px);
+            padding: 0;
+        }
+
+        .sidebar-header {
+            background-color: #002855;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+        }
+
+        .sidebar-header img {
+            max-width: 80px;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-section {
+            background-color: #004a99;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .menu-subsection {
+            background-color: #003d82;
+            padding: 0.4rem 1rem;
+            color: #a8d5ff;
+            font-size: 0.8rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .menu-item {
+            background-color: #0056a3;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .menu-item:hover {
+            background-color: #0066cc;
+        }
+
+        .menu-item.active {
+            background-color: #0073e6;
+            font-weight: 500;
+        }
+
+        .content-area {
+            background-color: white;
+            padding: 1.5rem;
+            margin: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .tabs-header {
+            background-color: #b8d4f1;
+            border: 1px solid #8cb3d9;
+            display: flex;
+            margin-bottom: 1rem;
+        }
+
+        .tab-button {
+            padding: 0.5rem 1.5rem;
+            background-color: #b8d4f1;
+            border: none;
+            border-right: 1px solid #8cb3d9;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .tab-button:hover {
+            background-color: #a0c4e8;
+        }
+
+        .search-section {
+            background-color: #d9e8f7;
+            border: 1px solid #8cb3d9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-section h3 {
+            font-size: 1rem;
+            color: #003d82;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            align-items: center;
+        }
+
+        .form-group-inline {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group-inline label {
+            margin: 0;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #003d82;
+        }
+
+        .form-control-sm {
+            padding: 0.3rem 0.5rem;
+            font-size: 0.85rem;
+            height: 28px;
+        }
+
+        .date-input {
+            width: 100px;
+        }
+
+        .btn-sm {
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .results-section {
+            background-color: #d9e8f7;
+            border: 1px solid #8cb3d9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .results-header {
+            background-color: #4a8bc2;
+            color: white;
+            padding: 0.5rem 1rem;
+            margin: -1rem -1rem 1rem -1rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .table-responsive {
+            background-color: white;
+            border: 1px solid #8cb3d9;
+        }
+
+        .table-courier {
+            width: 100%;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        .table-courier thead {
+            background-color: #4a8bc2;
+            color: white;
+        }
+
+        .table-courier thead th {
+            padding: 0.4rem;
+            font-weight: 500;
+            border: 1px solid #fff;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        .table-courier tbody td {
+            padding: 0.4rem;
+            border: 1px solid #ddd;
+            font-size: 0.8rem;
+        }
+
+        .table-courier tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table-courier tbody tr:hover {
+            background-color: #e8f4ff;
+        }
+
+        .radio-column {
+            text-align: center;
+            width: 30px;
+        }
+
+        .btn-calendar {
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            padding: 0.2rem 0.4rem;
+            cursor: pointer;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar superior -->
+    <nav class="navbar-top">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-end align-items-center w-100 px-3">
+                <button class="logout-btn" onclick="cerrarSesion()">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 p-0 sidebar">
+                <div class="sidebar-header">
+                    <img src="https://framework.digital.gob.cl/images/logo_gobcl.svg" alt="Gobierno de Chile">
+                    <div class="sidebar-title">Sistema Fiscalización</div>
+                </div>
+
+                <ul class="sidebar-menu">
+                    <li class="menu-section">Definiciones Generales:</li>
+                    <li class="menu-subsection">Movimientos</li>
+                    <li><button class="menu-item active">Courier</button></li>
+                </ul>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-md-10">
+                <div class="content-area">
+                    <h2 class="mb-3" style="color: #003d82; font-size: 1.5rem; font-family: 'Roboto Slab', serif;">
+                        Courier
+                    </h2>
+
+                    <!-- Tabs -->
+                    <div class="tabs-header">
+                        <button class="tab-button">Seleccionar</button>
+                        <button class="tab-button">Registro de Resultados</button>
+                        <button class="tab-button">Resumen</button>
+                    </div>
+
+                    <!-- Sección de Selecciones -->
+                    <div class="search-section">
+                        <h3>Selecciones:</h3>
+
+                        <div class="form-row">
+                            <div class="form-group-inline">
+                                <label for="numeroManifiesto">Número Manifiesto:</label>
+                                <input type="text" id="numeroManifiesto" class="form-control form-control-sm" style="width: 150px;">
+                            </div>
+
+                            <div class="form-group-inline">
+                                <label for="guiaCourier">Guía Courier:</label>
+                                <input type="text" id="guiaCourier" class="form-control form-control-sm" style="width: 150px;">
+                            </div>
+
+                            <div class="form-group-inline">
+                                <label for="tipo">Tipo</label>
+                                <select id="tipo" class="form-control form-control-sm" style="width: 120px;">
+                                    <option value="todos">Todos</option>
+                                    <option value="courier_normal">Courier Normal</option>
+                                    <option value="courier_expreso">Courier Expreso</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group-inline">
+                                <label for="emisor">Emisor:</label>
+                                <button class="btn btn-secondary btn-sm">Buscar Emisor</button>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group-inline">
+                                <label for="fechaEmisionDesde">Fecha Emisión Desde:</label>
+                                <input type="text" id="fechaEmisionDesde" class="form-control form-control-sm date-input" value="15/10/2025">
+                                <button class="btn-calendar">📅</button>
+                                <span class="text-muted small">[dd/MM/yyyy]</span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group-inline">
+                                <label for="fechaEmisionHasta">Fecha Emisión Hasta:</label>
+                                <input type="text" id="fechaEmisionHasta" class="form-control form-control-sm date-input" value="15/10/2025">
+                                <button class="btn-calendar">📅</button>
+                                <span class="text-muted small">[dd/MM/yyyy]</span>
+                            </div>
+                        </div>
+
+                        <div class="form-row align-items-center">
+                            <div class="form-group-inline">
+                                <label for="mostrar">Mostrar</label>
+                                <select id="mostrar" class="form-control form-control-sm" style="width: 120px;">
+                                    <option value="pendientes">Pendientes</option>
+                                    <option value="procesados">Procesados</option>
+                                    <option value="todos">Todos</option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn-primary btn-sm" onclick="buscarListasCarga()">LISTAS DE CARGA</button>
+                            <button class="btn btn-secondary btn-sm" onclick="modificarMarca()">ModificaMarca</button>
+                        </div>
+                    </div>
+
+                    <!-- Resultados -->
+                    <div class="results-section">
+                        <div class="results-header">
+                            Listas de Carga Encontradas: <span id="resultCount">1</span>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table-courier">
+                                <thead>
+                                    <tr>
+                                        <th class="radio-column"></th>
+                                        <th>Manifiesto</th>
+                                        <th>Tipo</th>
+                                        <th>Nro. Master/MIC</th>
+                                        <th>Nro. Vuelo/Patente</th>
+                                        <th>Cía. Courier</th>
+                                        <th>Peso<br>Bruto</th>
+                                        <th>Valor<br>Total</th>
+                                        <th>Total<br>Guías</th>
+                                        <th>Guías<br>Select.</th>
+                                        <th>Guías<br>$2500 USD.</th>
+                                        <th>Revisado</th>
+                                        <th>Conformado</th>
+                                        <th>Fecha de<br>Aceptación</th>
+                                        <th>Fecha<br>Impresión</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaResultados">
+                                    <tr>
+                                        <td class="radio-column">
+                                            <input type="radio" name="selectCarga" value="84751">
+                                        </td>
+                                        <td>84751</td>
+                                        <td>Courier Normal</td>
+                                        <td>789444</td>
+                                        <td>033</td>
+                                        <td>MENDEZ TRONCOSO, YERKO WILLIAM</td>
+                                        <td style="text-align: right;">11499.0</td>
+                                        <td style="text-align: right;">39055.0</td>
+                                        <td style="text-align: center;">85</td>
+                                        <td style="text-align: center;">16</td>
+                                        <td style="text-align: center;">16</td>
+                                        <td style="text-align: center;">NO</td>
+                                        <td style="text-align: center;">SI</td>
+                                        <td>18-01-2025<br>13:29</td>
+                                        <td>19-01-2025<br>19:01</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery requerido por el framework -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- Popper.js requerido por Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Framework Gobierno Digital Chile - JS -->
+    <script src="node_modules/@gobdigital-cl/gob.cl/dist/js/gob.cl.js"></script>
+
+    <script>
+        // Datos de ejemplo
+        const listasCargas = [
+            {
+                manifiesto: '84751',
+                tipo: 'Courier Normal',
+                master: '789444',
+                vuelo: '033',
+                compania: 'MENDEZ TRONCOSO, YERKO WILLIAM',
+                pesoBruto: 11499.0,
+                valorTotal: 39055.0,
+                totalGuias: 85,
+                guiasSelect: 16,
+                guias2500: 16,
+                revisado: 'NO',
+                conformado: 'SI',
+                fechaAceptacion: '18-01-2025 13:29',
+                fechaImpresion: '19-01-2025 19:01'
+            }
+        ];
+
+        function buscarListasCarga() {
+            const numeroManifiesto = document.getElementById('numeroManifiesto').value;
+            const guiaCourier = document.getElementById('guiaCourier').value;
+            const tipo = document.getElementById('tipo').value;
+            const fechaDesde = document.getElementById('fechaEmisionDesde').value;
+            const fechaHasta = document.getElementById('fechaEmisionHasta').value;
+            const mostrar = document.getElementById('mostrar').value;
+
+            console.log('Buscando listas de carga:', {
+                numeroManifiesto,
+                guiaCourier,
+                tipo,
+                fechaDesde,
+                fechaHasta,
+                mostrar
+            });
+
+            // Aquí iría la lógica de búsqueda en el backend
+            cargarResultados(listasCargas);
+        }
+
+        function cargarResultados(datos) {
+            const tbody = document.getElementById('tablaResultados');
+            const resultCount = document.getElementById('resultCount');
+
+            resultCount.textContent = datos.length;
+
+            tbody.innerHTML = datos.map((item, index) => `
+                <tr>
+                    <td class="radio-column">
+                        <input type="radio" name="selectCarga" value="${item.manifiesto}">
+                    </td>
+                    <td>${item.manifiesto}</td>
+                    <td>${item.tipo}</td>
+                    <td>${item.master}</td>
+                    <td>${item.vuelo}</td>
+                    <td>${item.compania}</td>
+                    <td style="text-align: right;">${item.pesoBruto}</td>
+                    <td style="text-align: right;">${item.valorTotal}</td>
+                    <td style="text-align: center;">${item.totalGuias}</td>
+                    <td style="text-align: center;">${item.guiasSelect}</td>
+                    <td style="text-align: center;">${item.guias2500}</td>
+                    <td style="text-align: center;">${item.revisado}</td>
+                    <td style="text-align: center;">${item.conformado}</td>
+                    <td>${item.fechaAceptacion.replace(' ', '<br>')}</td>
+                    <td>${item.fechaImpresion.replace(' ', '<br>')}</td>
+                </tr>
+            `).join('');
+        }
+
+        function modificarMarca() {
+            const seleccionado = document.querySelector('input[name="selectCarga"]:checked');
+
+            if (!seleccionado) {
+                alert('Por favor seleccione una lista de carga');
+                return;
+            }
+
+            console.log('Modificar marca para manifiesto:', seleccionado.value);
+            // Aquí iría la lógica para modificar la marca
+        }
+
+        function cerrarSesion() {
+            if (confirm('¿Está seguro que desea cerrar sesión?')) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Formateo de fechas
+        document.querySelectorAll('.date-input').forEach(input => {
+            input.addEventListener('blur', function() {
+                // Validación y formato de fecha
+                const fecha = this.value;
+                console.log('Fecha ingresada:', fecha);
+            });
+        });
+
+        // Cargar datos al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarResultados(listasCargas);
+        });
+    </script>
+</body>
+</html>
