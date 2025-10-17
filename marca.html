@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcas - Sistema Fiscalización</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f69b4',
+                        secondary: '#1e40af',
+                        accent: '#3b82f6'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <!-- Header Moderno -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <img src="imagenes_sistema/color_MinInterior.png" alt="Gobierno de Chile" class="h-12">
+                    <div class="border-l border-gray-300 pl-4">
+                        <h1 class="text-xl font-bold text-gray-900">Sistema de Marcas</h1>
+                        <p class="text-sm text-gray-500">Fiscalización Aduanera</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-bell text-gray-600"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                            U
+                        </div>
+                        <span class="text-sm font-medium text-gray-700">Usuario</span>
+                    </div>
+                    <button onclick="cerrarSesion()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center space-x-2">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación lateral y contenido -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-lg min-h-screen">
+            <nav class="p-4 space-y-2">
+                <div class="px-4 py-2 bg-gray-100 rounded-lg">
+                    <p class="text-xs font-bold text-gray-600 uppercase">Definiciones Generales</p>
+                </div>
+                <div class="px-4 py-1">
+                    <p class="text-xs text-gray-500">Movimientos</p>
+                </div>
+                <a href="courier.html" class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fas fa-box"></i>
+                    <span class="font-medium">Courier</span>
+                </a>
+                <a href="marca.html" class="flex items-center space-x-3 px-4 py-3 bg-primary text-white rounded-lg">
+                    <i class="fas fa-tag"></i>
+                    <span class="font-medium">Marca</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="flex-1 p-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Gestión de Marcas</h2>
+
+                <!-- Sección de Filtros -->
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-filter mr-2 text-primary"></i>
+                        Filtros de Búsqueda
+                    </h3>
+
+                    <form class="space-y-4">
+                        <!-- Primera fila -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Número Documento</label>
+                                <input type="text" id="numeroDocumento" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Tipo Documento</label>
+                                <select id="tipoDocumento" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="">Todos</option>
+                                    <option value="DIN">Declaración de Importación</option>
+                                    <option value="DUS">Declaración Única de Salida</option>
+                                    <option value="TRA">Tránsito</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Motivo Marca</label>
+                                <select id="motivoMarca" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="">Todos</option>
+                                    <option value="PRESUNCION_DROGA">Presunción Droga</option>
+                                    <option value="SUBVALUACION">Subvaluación</option>
+                                    <option value="CLASIFICACION">Clasificación Arancelaria</option>
+                                    <option value="ORIGEN">Origen</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Estado Documento</label>
+                                <select id="estadoDocumento" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="">Todos</option>
+                                    <option value="EN_REVISION">En Revisión</option>
+                                    <option value="APROBADO">Aprobado</option>
+                                    <option value="RECHAZADO">Rechazado</option>
+                                    <option value="PENDIENTE">Pendiente</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Segunda fila -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Fecha Marcación Desde</label>
+                                <input type="date" id="fechaMarcacionDesde" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Fecha Marcación Hasta</label>
+                                <input type="date" id="fechaMarcacionHasta" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Marca Activa</label>
+                                <select id="marcaActiva" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="">Todas</option>
+                                    <option value="S">Sí</option>
+                                    <option value="N">No</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Tercera fila -->
+                        <div class="flex items-end space-x-4">
+                            <div class="flex-1">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Responsable</label>
+                                <input type="text" id="nombreResponsable" placeholder="Nombre del responsable" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <button type="button" onclick="buscarMarcas()" class="px-6 py-2 bg-primary hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center space-x-2">
+                                <i class="fas fa-search"></i>
+                                <span>BUSCAR</span>
+                            </button>
+                            <button type="button" onclick="limpiarFiltros()" class="px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-colors flex items-center space-x-2">
+                                <i class="fas fa-eraser"></i>
+                                <span>LIMPIAR</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Resultados -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-primary to-blue-600 px-6 py-4">
+                        <h3 class="text-white font-bold text-lg flex items-center">
+                            <i class="fas fa-list mr-2"></i>
+                            Marcas Encontradas: <span id="resultCount" class="ml-2">0</span>
+                        </h3>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 border-b border-gray-200">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">ID Documento</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Número Documento</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Tipo Documento</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Responsable</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Motivo Marca</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Fecha Marcación</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Estado</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Activa</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Observación</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaResultados" class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td colspan="10" class="px-4 py-8 text-center text-gray-500">
+                                        <i class="fas fa-search text-4xl mb-2"></i>
+                                        <p>Utilice los filtros para buscar marcas</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Paginación -->
+                    <div class="bg-gray-50 px-6 py-4 flex items-center justify-between border-t border-gray-200">
+                        <div class="flex items-center text-sm text-gray-700">
+                            <span>Mostrando <span class="font-semibold" id="showingCount">0</span> de <span class="font-semibold" id="totalCount">0</span> resultados</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50" disabled>
+                                Anterior
+                            </button>
+                            <button class="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium">1</button>
+                            <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50" disabled>
+                                Siguiente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Función para simular el fetching de datos desde un JSON
+        async function fetchMarcasData() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const mockData = [
+                        {
+                            idDocumento: 99999,
+                            idPersonaResponsable: 12345,
+                            codigoOpFiscMotivoMarca: "PRESUNCION_DROGA",
+                            idOpFiscOperacion: 333,
+                            numeroDocumento: "DOC-2025-003",
+                            codigoTipoDocumento: "DIN",
+                            tipoDocumento: "Declaracion de Importacion",
+                            nombrePersona: "Carlos Rodriguez Soto",
+                            fechaMarcacion: "2025-10-11T05:25:55.746Z",
+                            observacion: "Perfil de riesgo alto",
+                            activa: "S",
+                            fechaActiva: "2025-10-11T05:25:55.746Z",
+                            codigoEstadoDocumento: "EN_REVISION",
+                            idOpFiscAccionFiscalizacion: null,
+                            idDocumentoOpFiscMarcaPadre: null,
+                            idPersonaResponsableOpFiscMarcaPadre: null,
+                            codOpFiscMtvoMarcaPadre: null,
+                            idOpFiscOperacionPadre: null,
+                            valoresObjeto: []
+                        }
+                    ];
+                    resolve(mockData);
+                }, 500);
+            });
+        }
+
+        function formatearFecha(fechaISO) {
+            const fecha = new Date(fechaISO);
+            const dia = String(fecha.getDate()).padStart(2, '0');
+            const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+            const anio = fecha.getFullYear();
+            const horas = String(fecha.getHours()).padStart(2, '0');
+            const minutos = String(fecha.getMinutes()).padStart(2, '0');
+            return `${dia}-${mes}-${anio} ${horas}:${minutos}`;
+        }
+
+        function formatearMotivoMarca(codigo) {
+            const motivos = {
+                'PRESUNCION_DROGA': 'Presunción Droga',
+                'SUBVALUACION': 'Subvaluación',
+                'CLASIFICACION': 'Clasificación Arancelaria',
+                'ORIGEN': 'Origen'
+            };
+            return motivos[codigo] || codigo;
+        }
+
+        function formatearEstado(codigo) {
+            const estados = {
+                'EN_REVISION': 'En Revisión',
+                'APROBADO': 'Aprobado',
+                'RECHAZADO': 'Rechazado',
+                'PENDIENTE': 'Pendiente'
+            };
+            return estados[codigo] || codigo;
+        }
+
+        function getEstadoColor(codigo) {
+            const colores = {
+                'EN_REVISION': 'bg-yellow-100 text-yellow-800',
+                'APROBADO': 'bg-green-100 text-green-800',
+                'RECHAZADO': 'bg-red-100 text-red-800',
+                'PENDIENTE': 'bg-blue-100 text-blue-800'
+            };
+            return colores[codigo] || 'bg-gray-100 text-gray-800';
+        }
+
+        async function buscarMarcas() {
+            const numeroDocumento = document.getElementById('numeroDocumento').value;
+            const tipoDocumento = document.getElementById('tipoDocumento').value;
+            const motivoMarca = document.getElementById('motivoMarca').value;
+            const estadoDocumento = document.getElementById('estadoDocumento').value;
+            const fechaDesde = document.getElementById('fechaMarcacionDesde').value;
+            const fechaHasta = document.getElementById('fechaMarcacionHasta').value;
+            const marcaActiva = document.getElementById('marcaActiva').value;
+            const nombreResponsable = document.getElementById('nombreResponsable').value;
+
+            showToast('info', 'Buscando marcas...');
+
+            try {
+                let datos = await fetchMarcasData();
+
+                // Aplicar filtros
+                if (numeroDocumento) {
+                    datos = datos.filter(m => m.numeroDocumento.includes(numeroDocumento));
+                }
+                if (tipoDocumento) {
+                    datos = datos.filter(m => m.codigoTipoDocumento === tipoDocumento);
+                }
+                if (motivoMarca) {
+                    datos = datos.filter(m => m.codigoOpFiscMotivoMarca === motivoMarca);
+                }
+                if (estadoDocumento) {
+                    datos = datos.filter(m => m.codigoEstadoDocumento === estadoDocumento);
+                }
+                if (marcaActiva) {
+                    datos = datos.filter(m => m.activa === marcaActiva);
+                }
+                if (nombreResponsable) {
+                    datos = datos.filter(m => m.nombrePersona.toLowerCase().includes(nombreResponsable.toLowerCase()));
+                }
+
+                cargarResultados(datos);
+                showToast('success', `Se encontraron ${datos.length} marca(s)`);
+            } catch (error) {
+                showToast('error', 'Error al buscar marcas');
+                console.error('Error:', error);
+            }
+        }
+
+        function cargarResultados(datos) {
+            const tbody = document.getElementById('tablaResultados');
+            const resultCount = document.getElementById('resultCount');
+            const showingCount = document.getElementById('showingCount');
+            const totalCount = document.getElementById('totalCount');
+
+            resultCount.textContent = datos.length;
+            showingCount.textContent = datos.length;
+            totalCount.textContent = datos.length;
+
+            if (datos.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="10" class="px-4 py-8 text-center text-gray-500">
+                            <i class="fas fa-inbox text-4xl mb-2"></i>
+                            <p>No se encontraron resultados</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = datos.map((item) => `
+                <tr class="hover:bg-blue-50 transition-colors">
+                    <td class="px-4 py-3 text-sm font-semibold text-gray-900">${item.idDocumento}</td>
+                    <td class="px-4 py-3 text-sm">
+                        <span class="font-semibold text-primary">${item.numeroDocumento}</span>
+                    </td>
+                    <td class="px-4 py-3 text-sm text-gray-900">${item.tipoDocumento}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900">${item.nombrePersona}</td>
+                    <td class="px-4 py-3 text-sm">
+                        <span class="px-2 py-1 text-xs font-semibold whitespace-nowrap rounded-full bg-purple-100 text-purple-800">
+                            ${formatearMotivoMarca(item.codigoOpFiscMotivoMarca)}
+                        </span>
+                    </td>
+                    <td class="px-4 py-3 text-sm text-gray-900">${formatearFecha(item.fechaMarcacion)}</td>
+                    <td class="px-4 py-3 text-sm">
+                        <span class="px-2 py-1 text-xs font-semibold whitespace-nowrap rounded-full ${getEstadoColor(item.codigoEstadoDocumento)}">
+                            ${formatearEstado(item.codigoEstadoDocumento)}
+                        </span>
+                    </td>
+                    <td class="px-4 py-3 text-center">
+                        <span class="px-2 py-1 text-xs font-semibold whitespace-nowrap rounded-full ${item.activa === 'S' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                            ${item.activa === 'S' ? 'SÍ' : 'NO'}
+                        </span>
+                    </td>
+                    <td class="px-4 py-3 text-sm text-gray-900">
+                        <span class="truncate block max-w-xs" title="${item.observacion}">${item.observacion}</span>
+                    </td>
+                    <td class="px-4 py-3 text-sm">
+                        <div class="flex space-x-2">
+                            <button onclick="verDetalle(${item.idDocumento})" class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Ver detalle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button onclick="editarMarca(${item.idDocumento})" class="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-colors" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function limpiarFiltros() {
+            document.getElementById('numeroDocumento').value = '';
+            document.getElementById('tipoDocumento').value = '';
+            document.getElementById('motivoMarca').value = '';
+            document.getElementById('estadoDocumento').value = '';
+            document.getElementById('fechaMarcacionDesde').value = '';
+            document.getElementById('fechaMarcacionHasta').value = '';
+            document.getElementById('marcaActiva').value = '';
+            document.getElementById('nombreResponsable').value = '';
+
+            const tbody = document.getElementById('tablaResultados');
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="10" class="px-4 py-8 text-center text-gray-500">
+                        <i class="fas fa-search text-4xl mb-2"></i>
+                        <p>Utilice los filtros para buscar marcas</p>
+                    </td>
+                </tr>
+            `;
+
+            document.getElementById('resultCount').textContent = '0';
+            document.getElementById('showingCount').textContent = '0';
+            document.getElementById('totalCount').textContent = '0';
+
+            showToast('info', 'Filtros limpiados');
+        }
+
+        function verDetalle(idDocumento) {
+            showToast('info', `Ver detalle de documento ${idDocumento}`);
+            console.log('Ver detalle:', idDocumento);
+        }
+
+        function editarMarca(idDocumento) {
+            showToast('info', `Editar marca de documento ${idDocumento}`);
+            console.log('Editar marca:', idDocumento);
+        }
+
+        function cerrarSesion() {
+            if (confirm('¿Está seguro que desea cerrar sesión?')) {
+                showToast('success', 'Sesión cerrada con éxito');
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Toast utility
+        function showToast(type = 'info', message = '') {
+            const rootId = 'toast-root';
+            let root = document.getElementById(rootId);
+            if (!root) {
+                root = document.createElement('div');
+                root.id = rootId;
+                root.className = 'fixed bottom-4 right-4 z-[100] space-y-2';
+                document.body.appendChild(root);
+            }
+
+            const colors = {
+                success: 'bg-green-100 text-green-800 border-green-200',
+                error: 'bg-red-100 text-red-800 border-red-200',
+                warning: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+                info: 'bg-blue-100 text-blue-800 border-blue-200'
+            };
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-times-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
+
+            const wrapper = document.createElement('div');
+            wrapper.className = `pointer-events-auto border ${colors[type] || colors.info} rounded-lg shadow-lg px-4 py-3 flex items-start space-x-3 animate-[fadeIn_0.2s_ease-out]`;
+            wrapper.innerHTML = `
+                <i class="fas ${icons[type] || icons.info} mt-0.5"></i>
+                <div class="text-sm font-medium">${message}</div>
+                <button aria-label="Cerrar" class="ml-2 text-inherit/70 hover:text-inherit">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+
+            const closeBtn = wrapper.querySelector('button');
+            const remove = () => {
+                wrapper.style.animation = 'fadeOut 0.2s ease-in forwards';
+                setTimeout(() => wrapper.remove(), 180);
+            };
+            closeBtn.addEventListener('click', remove);
+
+            root.appendChild(wrapper);
+            setTimeout(remove, 3500);
+        }
+
+        // Keyframes
+        (function ensureKeyframes(){
+            if (document.getElementById('toast-keyframes')) return;
+            const style = document.createElement('style');
+            style.id = 'toast-keyframes';
+            style.textContent = `
+                @keyframes fadeIn { from { opacity: 0; transform: translateY(4px);} to { opacity: 1; transform: translateY(0);} }
+                @keyframes fadeOut { from { opacity: 1; transform: translateY(0);} to { opacity: 0; transform: translateY(4px);} }
+            `;
+            document.head.appendChild(style);
+        })();
+
+        // Inicialización: cargar datos automáticamente al cargar la página
+        document.addEventListener('DOMContentLoaded', async function() {
+            const datos = await fetchMarcasData();
+            cargarResultados(datos);
+        });
+    </script>
+    
+    <!-- Toast Container -->
+    <div id="toast-root" class="fixed bottom-4 right-4 z-[100] space-y-2"></div>
+</body>
+</html>
